@@ -52,7 +52,7 @@
   
 範例腳本如下圖：
 
-![image](https://github.com/Gilleschen/APP_Vsaas_2.0_Android_invoke_excel_Result_try_catch/blob/master/picture/Testcase_example.PNG)
+![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/Script_example.PNG)
   
 7. ExpectResult工作表輸入各測試案例的期望結果
 
