@@ -80,6 +80,10 @@
         
         2.5 執行腳本：開始執行指定的工作表腳本，建議執行腳本前請確認前4項功能無誤
         
+                2.5.1 點擊執行腳本後，自動啟動Selenium Hub (http://localhost:4444/)
+        
+                2.5.2 自動啟動Selenium Node (Port = 5555, maxInstances = 5)
+        
         註：2.2、2.3及2.4功能僅檢查以_TestScript為結尾且未隱藏的工作表 
 
 #### Excel 測試報告
