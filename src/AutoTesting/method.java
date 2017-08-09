@@ -121,7 +121,7 @@ public class method {
 				appElemnt = TestCase.StepList.get(i + 1);
 				i = i + 1;
 				break;
-				
+
 			case "Byid_Scroll":
 				methodName = "Byid_Scroll";
 				appElemnt = TestCase.StepList.get(i + 1);
@@ -303,9 +303,6 @@ public class method {
 	public void Launch() {
 		CurrentCaseNumber = CurrentCaseNumber + 1;
 		DesiredCapabilities cap[] = new DesiredCapabilities[TestCase.DeviceInformation.BrowserList.size()];
-		// for (int i = 0; i < driver.length; i++) {
-		// cap[i] = new DesiredCapabilities();
-		// }
 
 		for (int i = 0; i < driver.length; i++) {
 			cap[i] = new DesiredCapabilities();
@@ -350,6 +347,7 @@ public class method {
 			;
 		}
 	}
+
 	public void ScreenShot() {
 
 		Calendar date = Calendar.getInstance();
@@ -360,16 +358,18 @@ public class method {
 		String sec = Integer.toString(date.get(Calendar.SECOND));
 		for (int i = 0; i < driver.length; i++) {
 			File screenShotFile = (File) ((TakesScreenshot) driver[i]).getScreenshotAs(OutputType.FILE);
-			
+
 			try {
-				FileUtils.copyFile(screenShotFile, new File(
-						TestCase.CaseList.get(CurrentCaseNumber) + "_" + month + day + hour + min + sec + ".jpg"));
-				System.out.println("[Log] " + "ScreenShoot Successfully!! (CaseName+Month+Day+Hour+Minus+Second)");
+				FileUtils.copyFile(screenShotFile, new File("C:\\TUTK_QA_TestTool\\TestReport\\"
+						+ TestCase.CaseList.get(CurrentCaseNumber) + "_" + month + day + hour + min + sec + ".jpg"));
+				System.out.println("[Log] " + "ScreenShoot Successfully!! (Name:CaseName+Month+Day+Hour+Minus+Second)");
+
 			} catch (IOException e) {
 				;
 			}
 		}
 	}
+
 	public void SubMethod_Result(boolean ErrorResult[], boolean result[]) {
 		// ¶}±ÒExcel
 		try {
