@@ -62,7 +62,7 @@
         
  ExpectResult範例如下圖：
  
- ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/Script_example.PNG)
+ ![image](https://github.com/Gilleschen/Android_invoke_excel/blob/master/picture/Result_example.PNG)
 
 #### 測試腳本語法檢查：
 
