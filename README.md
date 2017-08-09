@@ -4,7 +4,7 @@
 
 1. 下載Selenium Standalone Server及瀏覽器WebDriver (請參考<a href="http://www.seleniumhq.org/download/">Selenium Downloads</a>)
 
-2. 下載Web_Auto.jar及Web_TestScript.xlsm
+2. 下載<a href="https://github.com/Gilleschen/Web_Auto_Testing/blob/master/Web_Auto.jar">Web_Auto.jar</a>及<a href="https://github.com/Gilleschen/Web_Auto_Testing/blob/master/Web_TestScrpit.xlsm">Web_TestScript.xlsm</a>
 
 #### 測試腳本建立說明：
 
