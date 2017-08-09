@@ -8,15 +8,21 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -43,8 +49,7 @@ public class method {
 
 		invokeFunction();
 		System.out.println("測試結束!!!!!!!!");
-		// Process proc = Runtime.getRuntime().exec("explorer
-		// C:\\TUTK_QA_TestTool\\TestReport");// 開啟TestReport資料夾
+		Process proc = Runtime.getRuntime().exec("explorer C:\\TUTK_QA_TestTool\\TestReport");// 開啟TestReport資料夾
 	}
 
 	public static void invokeFunction() throws NoSuchMethodException, SecurityException, IllegalAccessException,
@@ -107,6 +112,18 @@ public class method {
 
 			case "ByXpath_Result":
 				methodName = "ByXpath_Result";
+				appElemnt = TestCase.StepList.get(i + 1);
+				i = i + 1;
+				break;
+
+			case "ByXpath_Scroll":
+				methodName = "ByXpath_Scroll";
+				appElemnt = TestCase.StepList.get(i + 1);
+				i = i + 1;
+				break;
+				
+			case "Byid_Scroll":
+				methodName = "Byid_Scroll";
 				appElemnt = TestCase.StepList.get(i + 1);
 				i = i + 1;
 				break;
@@ -176,8 +193,9 @@ public class method {
 
 			try {
 				wait[i] = new WebDriverWait(driver[i], command_timeout);
-				element[i] =wait[i].until(ExpectedConditions.visibilityOfElementLocated(By.xpath(appElemnt))).getText();
-				
+				element[i] = wait[i].until(ExpectedConditions.visibilityOfElementLocated(By.xpath(appElemnt)))
+						.getText();
+
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
 				element[i] = "ERROR";// 找不到該物件，回傳Error
@@ -245,6 +263,37 @@ public class method {
 			try {
 				wait[i] = new WebDriverWait(driver[i], command_timeout);
 				wait[i].until(ExpectedConditions.visibilityOfElementLocated(By.xpath(appElemnt))).sendKeys(appInput);
+
+			} catch (Exception e) {
+				System.out.println("[Error] Can't find " + appElemnt);
+			}
+		}
+	}
+
+	public void ByXpath_Scroll() {
+		for (int i = 0; i < driver.length; i++) {
+			try {
+				wait[i] = new WebDriverWait(driver[i], command_timeout);
+				WebElement target = wait[i].until(ExpectedConditions.presenceOfElementLocated((By.xpath(appElemnt))));
+				Actions actions = new Actions(driver[i]);
+				actions.moveToElement(target);
+				// actions.click(target);
+				actions.perform();
+			} catch (Exception e) {
+				System.out.println("[Error] Can't find " + appElemnt);
+			}
+		}
+	}
+
+	public void Byid_Scroll() {
+		for (int i = 0; i < driver.length; i++) {
+			try {
+				wait[i] = new WebDriverWait(driver[i], command_timeout);
+				WebElement target = wait[i].until(ExpectedConditions.presenceOfElementLocated((By.id(appElemnt))));
+				Actions actions = new Actions(driver[i]);
+				actions.moveToElement(target);
+				// actions.click(target);
+				actions.perform();
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
 			}
@@ -254,9 +303,9 @@ public class method {
 	public void Launch() {
 		CurrentCaseNumber = CurrentCaseNumber + 1;
 		DesiredCapabilities cap[] = new DesiredCapabilities[TestCase.DeviceInformation.BrowserList.size()];
-		//for (int i = 0; i < driver.length; i++) {
-			//cap[i] = new DesiredCapabilities();
-		//}
+		// for (int i = 0; i < driver.length; i++) {
+		// cap[i] = new DesiredCapabilities();
+		// }
 
 		for (int i = 0; i < driver.length; i++) {
 			cap[i] = new DesiredCapabilities();
@@ -281,6 +330,46 @@ public class method {
 		}
 	}
 
+	public void Sleep() {
+		String NewString = "";// 新字串
+		char[] r = { '.' };// 小數點字元
+		char[] c = appInput.toCharArray();// 將字串轉成字元陣列
+		for (int i = 0; i < c.length; i++) {
+			if (c[i] != r[0]) {// 判斷字元是否為小數點
+				NewString = NewString + c[i];// 否，將字元組合成新字串
+			} else {
+				break;// 是，跳出迴圈
+			}
+		}
+
+		try {
+			System.out.println("[driver] [start] Sleep(): " + NewString + " second...");
+			Thread.sleep(Integer.valueOf(NewString) * 1000);// 將字串轉成整數
+			System.out.println("[driver] [end] Sleep");
+		} catch (Exception e) {
+			;
+		}
+	}
+	public void ScreenShot() {
+
+		Calendar date = Calendar.getInstance();
+		String month = Integer.toString(date.get(Calendar.MONTH) + 1);
+		String day = Integer.toString(date.get(Calendar.DAY_OF_MONTH));
+		String hour = Integer.toString(date.get(Calendar.HOUR_OF_DAY));
+		String min = Integer.toString(date.get(Calendar.MINUTE));
+		String sec = Integer.toString(date.get(Calendar.SECOND));
+		for (int i = 0; i < driver.length; i++) {
+			File screenShotFile = (File) ((TakesScreenshot) driver[i]).getScreenshotAs(OutputType.FILE);
+			
+			try {
+				FileUtils.copyFile(screenShotFile, new File(
+						TestCase.CaseList.get(CurrentCaseNumber) + "_" + month + day + hour + min + sec + ".jpg"));
+				System.out.println("[Log] " + "ScreenShoot Successfully!! (CaseName+Month+Day+Hour+Minus+Second)");
+			} catch (IOException e) {
+				;
+			}
+		}
+	}
 	public void SubMethod_Result(boolean ErrorResult[], boolean result[]) {
 		// 開啟Excel
 		try {
