@@ -2,11 +2,9 @@
 
 #### 測試前設定：
 
-1. 下載Selenium Standalone Server (請參考<a href="http://www.seleniumhq.org/download/">Selenium Downloads</a>)
+1. 下載Selenium Standalone Server及瀏覽器WebDriver (請參考<a href="http://www.seleniumhq.org/download/">Selenium Downloads</a>)
 
-2. 下載瀏覽器WebDriver (請參考<a href="http://www.seleniumhq.org/download/">Selenium Downloads</a>)
-
-3. 下載Web_Auto.jar及Web_TestScript.xlsm
+2. 下載Web_Auto.jar及Web_TestScript.xlsm
 
 #### 測試腳本建立說明：
 
@@ -96,4 +94,5 @@
 
 ![image](https://github.com/Gilleschen/APP_Vsaas_2.0_Android_invoke_excel_Result_try_catch/blob/master/picture/Testreport_example.PNG)
 
-
+##### 備註
+Selenium Client Version:3.4.0
