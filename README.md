@@ -98,7 +98,7 @@
 
 ![image](https://github.com/Gilleschen/APP_Vsaas_2.0_Android_invoke_excel_Result_try_catch/blob/master/picture/Testreport_example.PNG)
 
-##### 備註
+##### 備註：
 
 註1. Selenium Client Version:3.4.0
 
