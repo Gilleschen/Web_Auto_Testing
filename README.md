@@ -70,13 +70,13 @@
 
 2. 各功能說明：
 
-        2.1 檢查資訊：確認Web_Infor工作表所有欄位是否正確
+        2.1 檢查資訊：檢查Web_Infor工作表所有欄位
         
         2.2 檢查案例語法：確認各案例結束後均執行Quit方法，可不強制要求
         
-        2.3 檢查案例輸入值：確認所有命令及參數是否正確
+        2.3 檢查案例輸入值：檢查所有命令及參數
         
-        2.4 檢查期望結果：確認案例之期望字串是否列於ExpectResult工作表，當然非所有案列都需列ExpectResult
+        2.4 檢查期望結果：確認各案例之期望字串是否列於ExpectResult工作表；若只想自動化操作Web，當然非所有案列都需列ExpectResult
         
         2.5 執行腳本：開始執行指定的工作表腳本，建議執行腳本前請確認前4項功能無誤
         
@@ -99,4 +99,8 @@
 ![image](https://github.com/Gilleschen/APP_Vsaas_2.0_Android_invoke_excel_Result_try_catch/blob/master/picture/Testreport_example.PNG)
 
 ##### 備註
-Selenium Client Version:3.4.0
+
+註1. Selenium Client Version:3.4.0
+
+註2. Excel欄位若輸入純數字(e.g. 8888)，請轉換為文字格式，皆於數字前面加入單引號 (e.g. '8888)或執行增益集的檢查案例輸入值功能
+
