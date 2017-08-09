@@ -20,7 +20,7 @@
 
 5. Web_Infor工作表輸入Browser、BrowserDriverPath、TestURL、待測試腳本(以_TestScript結尾的工作表)、Web_Auto.jar路徑及Selenium Standalone Server.jar路徑，範例如下圖：
 
-![image](https://github.com/Gilleschen/Android_invoke_excel/blob/master/picture/app_device_info_example.PNG)
+![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/web_infor.PNG)
 
 6. 建立腳本(建立案列Case)：新增一工作表，工作表名稱須以_TestScript為結尾 (e.g. Login_TestScript)，目前支援指令如下: (大小寫有分，使用方式請參考Web_TestScript.xlsm內說明工作表)
 
@@ -62,7 +62,7 @@
         
  ExpectResult範例如下圖：
  
- ![image](https://github.com/Gilleschen/APP_Vsaas_2.0_Android_invoke_excel_Result_try_catch/blob/master/picture/Result_example.PNG)
+ ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/Script_example.PNG)
 
 #### 測試腳本語法檢查：
 
@@ -90,7 +90,7 @@
 
 2. 根據瀏覽器類型自動建立TestReport工作表，如下圖： (e.g. chrome_TestReport)
 
-![image](https://github.com/Gilleschen/APP_Vsaas_2.0_Android_invoke_excel_Result_try_catch/blob/master/picture/Testreport_sheet_example.PNG)
+![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/report.PNG)
 
 範例測試結果如下圖：
 
