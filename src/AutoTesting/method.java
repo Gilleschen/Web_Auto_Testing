@@ -6,7 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.MalformedURLException;
+
 import java.net.URL;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
@@ -16,24 +16,27 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.Platform;
+
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
+
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import junit.framework.TestCase;
 
 public class method {
 	static LoadTestCase TestCase = new LoadTestCase();
 	LoadExpectResult ExpectResult = new LoadExpectResult();
+
+	static String CaseErrorList[][] = new String[TestCase.CaseList.size()][TestCase.DeviceInformation.BrowserList
+			.size()];// 紀錄各案例於各裝置之指令結果 (2維陣列)CaseErrorList[CaseList][Devices]
+	String ErrorList[] = new String[TestCase.DeviceInformation.BrowserList.size()];// 紀錄各裝置之指令結果
+
 	static int port = 5555;
-	static int command_timeout = 30;// 30sec
+	static int command_timeout = 15;// 30sec
 	static String appElemnt;// APP元件名稱
 	static String appInput;// 輸入值
 	static String appInputXpath;// 輸入值的Xpath格式
@@ -41,6 +44,7 @@ public class method {
 	static WebDriverWait[] wait = new WebDriverWait[TestCase.DeviceInformation.BrowserList.size()];
 	String element[] = new String[driver.length];
 	static int CurrentCaseNumber = -1;// 目前執行到第幾個測試案列
+	static Boolean CommandError = true;// 判定執行的指令是否出現錯誤；ture為正確；false為錯誤
 	XSSFSheet Sheet;
 	XSSFWorkbook workBook;
 
@@ -58,96 +62,101 @@ public class method {
 		Class c = obj.getClass();
 		String methodName = null;
 
-		for (int i = 0; i < TestCase.StepList.size(); i++) {
+		for (int CurrentCase = 0; CurrentCase < TestCase.StepList.size(); CurrentCase++) {
+			CommandError = true;// 預設CommandError為True
+			for (int CurrentCaseStep = 0; CurrentCaseStep < TestCase.StepList.get(CurrentCase)
+					.size(); CurrentCaseStep++) {
+				if (!CommandError) {
+					break;// 若目前測試案例出現CommandError=false，則跳出目前案例並執行下一個案例
+				}
+				switch (TestCase.StepList.get(CurrentCase).get(CurrentCaseStep).toString()) {
 
-			switch (TestCase.StepList.get(i).toString()) {
+				case "Launch":
+					methodName = "Launch";
+					break;
 
-			case "Launch":
-				methodName = "Launch";
-				break;
+				case "Byid_SendKey":
+					methodName = "Byid_SendKey";
+					appElemnt = TestCase.StepList.get(CurrentCase).get(CurrentCaseStep + 1);
+					appInput = TestCase.StepList.get(CurrentCase).get(CurrentCaseStep + 2);
+					CurrentCaseStep = CurrentCaseStep + 2;
+					break;
 
-			case "Byid_SendKey":
-				methodName = "Byid_SendKey";
-				appElemnt = TestCase.StepList.get(i + 1);
-				appInput = TestCase.StepList.get(i + 2);
-				i = i + 2;
-				break;
+				case "Byid_Click":
+					methodName = "Byid_Click";
+					appElemnt = TestCase.StepList.get(CurrentCase).get(CurrentCaseStep + 1);
+					CurrentCaseStep = CurrentCaseStep + 1;
+					break;
 
-			case "Byid_Click":
-				methodName = "Byid_Click";
-				appElemnt = TestCase.StepList.get(i + 1);
-				i = i + 1;
-				break;
+				case "ByXpath_SendKey":
+					methodName = "ByXpath_SendKey";
+					appElemnt = TestCase.StepList.get(CurrentCase).get(CurrentCaseStep + 1);
+					appInput = TestCase.StepList.get(CurrentCase).get(CurrentCaseStep + 2);
+					CurrentCaseStep = CurrentCaseStep + 2;
+					break;
 
-			case "ByXpath_SendKey":
-				methodName = "ByXpath_SendKey";
-				appElemnt = TestCase.StepList.get(i + 1);
-				appInput = TestCase.StepList.get(i + 2);
-				i = i + 2;
-				break;
+				case "ByXpath_Click":
+					methodName = "ByXpath_Click";
+					appElemnt = TestCase.StepList.get(CurrentCase).get(CurrentCaseStep + 1);
+					CurrentCaseStep = CurrentCaseStep + 1;
+					break;
 
-			case "ByXpath_Click":
-				methodName = "ByXpath_Click";
-				appElemnt = TestCase.StepList.get(i + 1);
-				i = i + 1;
-				break;
+				case "Byid_Wait":
+					methodName = "Byid_Wait";
+					appElemnt = TestCase.StepList.get(CurrentCase).get(CurrentCaseStep + 1);
+					CurrentCaseStep = CurrentCaseStep + 1;
+					break;
 
-			case "Byid_Wait":
-				methodName = "Byid_Wait";
-				appElemnt = TestCase.StepList.get(i + 1);
-				i = i + 1;
-				break;
+				case "ByXpath_Wait":
+					methodName = "ByXpath_Wait";
+					appElemnt = TestCase.StepList.get(CurrentCase).get(CurrentCaseStep + 1);
+					CurrentCaseStep = CurrentCaseStep + 1;
+					break;
 
-			case "ByXpath_Wait":
-				methodName = "ByXpath_Wait";
-				appElemnt = TestCase.StepList.get(i + 1);
-				i = i + 1;
-				break;
+				case "Byid_Result":
+					methodName = "Byid_Result";
+					appElemnt = TestCase.StepList.get(CurrentCase).get(CurrentCaseStep + 1);
+					CurrentCaseStep = CurrentCaseStep + 1;
+					break;
 
-			case "Byid_Result":
-				methodName = "Byid_Result";
-				appElemnt = TestCase.StepList.get(i + 1);
-				i = i + 1;
-				break;
+				case "ByXpath_Result":
+					methodName = "ByXpath_Result";
+					appElemnt = TestCase.StepList.get(CurrentCase).get(CurrentCaseStep + 1);
+					CurrentCaseStep = CurrentCaseStep + 1;
+					break;
 
-			case "ByXpath_Result":
-				methodName = "ByXpath_Result";
-				appElemnt = TestCase.StepList.get(i + 1);
-				i = i + 1;
-				break;
+				case "ByXpath_Scroll":
+					methodName = "ByXpath_Scroll";
+					appElemnt = TestCase.StepList.get(CurrentCase).get(CurrentCaseStep + 1);
+					CurrentCaseStep = CurrentCaseStep + 1;
+					break;
 
-			case "ByXpath_Scroll":
-				methodName = "ByXpath_Scroll";
-				appElemnt = TestCase.StepList.get(i + 1);
-				i = i + 1;
-				break;
+				case "Byid_Scroll":
+					methodName = "Byid_Scroll";
+					appElemnt = TestCase.StepList.get(CurrentCase).get(CurrentCaseStep + 1);
+					CurrentCaseStep = CurrentCaseStep + 1;
+					break;
 
-			case "Byid_Scroll":
-				methodName = "Byid_Scroll";
-				appElemnt = TestCase.StepList.get(i + 1);
-				i = i + 1;
-				break;
+				case "Sleep":
+					methodName = "Sleep";
+					appInput = TestCase.StepList.get(CurrentCase).get(CurrentCaseStep + 1);
+					CurrentCaseStep = CurrentCaseStep + 1;
+					break;
 
-			case "Sleep":
-				methodName = "Sleep";
-				appInput = TestCase.StepList.get(i + 1);
-				i = i + 1;
-				break;
+				case "ScreenShot":
+					methodName = "ScreenShot";
+					break;
 
-			case "ScreenShot":
-				methodName = "ScreenShot";
-				break;
+				case "Quit":
+					methodName = "Quit";
+					break;
 
-			case "Quit":
-				methodName = "Quit";
-				break;
+				}
 
+				Method method;
+				method = c.getMethod(methodName, new Class[] {});
+				method.invoke(c.newInstance());
 			}
-
-			Method method;
-			method = c.getMethod(methodName, new Class[] {});
-			method.invoke(c.newInstance());
-
 		}
 	}
 
@@ -229,9 +238,12 @@ public class method {
 			try {
 				wait[i] = new WebDriverWait(driver[i], command_timeout);
 				wait[i].until(ExpectedConditions.visibilityOfElementLocated(By.id(appElemnt))).click();
-				// driver[i].findElement(By.xpath(appElemnt)).click();
+				ErrorList[i] = "Pass";
+				CaseErrorList[CurrentCaseNumber] = ErrorList;
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
+				CommandError = false;// 若找不到指定元件，則設定CommandError=false
+				driver[i].quit();//若找不到指定元件，則關閉Browser
 			}
 		}
 	}
@@ -241,8 +253,12 @@ public class method {
 			try {
 				wait[i] = new WebDriverWait(driver[i], command_timeout);
 				wait[i].until(ExpectedConditions.visibilityOfElementLocated(By.xpath(appElemnt))).click();
+				ErrorList[i] = "Pass";
+				CaseErrorList[CurrentCaseNumber] = ErrorList;
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
+				CommandError = false;// 若找不到指定元件，則設定CommandError=false
+				driver[i].quit();//若找不到指定元件，則關閉Browser
 			}
 		}
 	}
@@ -252,8 +268,12 @@ public class method {
 			try {
 				wait[i] = new WebDriverWait(driver[i], command_timeout);
 				wait[i].until(ExpectedConditions.visibilityOfElementLocated(By.id(appElemnt))).sendKeys(appInput);
+				ErrorList[i] = "Pass";
+				CaseErrorList[CurrentCaseNumber] = ErrorList;
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
+				CommandError = false;// 若找不到指定元件，則設定CommandError=false
+				driver[i].quit();//若找不到指定元件，則關閉Browser
 			}
 		}
 	}
@@ -263,9 +283,12 @@ public class method {
 			try {
 				wait[i] = new WebDriverWait(driver[i], command_timeout);
 				wait[i].until(ExpectedConditions.visibilityOfElementLocated(By.xpath(appElemnt))).sendKeys(appInput);
-
+				ErrorList[i] = "Pass";
+				CaseErrorList[CurrentCaseNumber] = ErrorList;
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
+				CommandError = false;// 若找不到指定元件，則設定CommandError=false
+				driver[i].quit();//若找不到指定元件，則關閉Browser
 			}
 		}
 	}
@@ -279,8 +302,12 @@ public class method {
 				actions.moveToElement(target);
 				// actions.click(target);
 				actions.perform();
+				ErrorList[i] = "Pass";
+				CaseErrorList[CurrentCaseNumber] = ErrorList;
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
+				CommandError = false;// 若找不到指定元件，則設定CommandError=false
+				driver[i].quit();//若找不到指定元件，則關閉Browser
 			}
 		}
 	}
@@ -294,8 +321,12 @@ public class method {
 				actions.moveToElement(target);
 				// actions.click(target);
 				actions.perform();
+				ErrorList[i] = "Pass";
+				CaseErrorList[CurrentCaseNumber] = ErrorList;
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
+				CommandError = false;// 若找不到指定元件，則設定CommandError=false
+				driver[i].quit();//若找不到指定元件，則關閉Browser
 			}
 		}
 	}
@@ -315,16 +346,54 @@ public class method {
 				driver[i].get(TestCase.DeviceInformation.URL);
 
 			} catch (Exception e1) {
-				;
+				System.out.println("[Error] Can't launch " + TestCase.DeviceInformation.BrowserList.get(i).toString());
 			}
 			// port++;
 		}
 	}
 
 	public void Quit() {
-		for (int i = 0; i < driver.length; i++) {
-			driver[i].quit();
+
+		for (int j = 0; j < driver.length; j++) {
+			driver[j].quit();// 離開APP後，寫入測試結果Pass或Error
+
+			// 開啟Excel
+			try {
+				workBook = new XSSFWorkbook(
+						new FileInputStream("C:\\TUTK_QA_TestTool\\TestReport\\Web_TestReport.xlsm"));
+			} catch (Exception e) {
+				System.out.println("[Error] Can't find C:\\TUTK_QA_TestTool\\TestReport\\Web_TestReport.xlsm");
+			}
+			for (int i = 0; i < driver.length; i++) {
+
+				if (TestCase.DeviceInformation.BrowserList.get(i).toString().length() > 20) {// Excel工作表名稱最常31字元因，故需判斷BrowserName長度是否大於31
+					char[] NewBrowserName = new char[20];// 因需包含_TestReport字串(共11字元)，故設定20位字元陣列(31-11)
+					TestCase.DeviceInformation.BrowserList.get(i).toString().getChars(0, 20, NewBrowserName, 0);// 取出BrowserName前20字元給NewBrowserName
+					Sheet = workBook.getSheet(String.valueOf(NewBrowserName) + "_TestReport");// 根據NewUdid，指定某台裝置的TestReport
+					// sheet
+				} else {
+					Sheet = workBook.getSheet(TestCase.DeviceInformation.BrowserList.get(i).toString() + "_TestReport");// 指定某台裝置的TestReport
+																														// sheet
+				}
+
+				if (CaseErrorList[CurrentCaseNumber][i].equals("Pass")) {// 取出CaseErrorList之第CurrentCaseNumber個測項中的第i台行動裝置之結果
+					Sheet.getRow(CurrentCaseNumber + 1).getCell(1).setCellValue("Pass");// 填入第i台行動裝置之第CurrentCaseNumber個測項結果Pass
+				}
+
+			}
+			// 執行寫入Excel後的存檔動作
+			try {
+				FileOutputStream out = new FileOutputStream(
+						new File("C:\\TUTK_QA_TestTool\\TestReport\\Web_TestReport.xlsm"));
+				workBook.write(out);
+				out.close();
+				workBook.close();
+			} catch (Exception e) {
+				System.out.println("[Error] Can't find C:\\TUTK_QA_TestTool\\TestReport\\Web_TestReport.xlsm");
+			}
+
 		}
+
 	}
 
 	public void Sleep() {
@@ -362,7 +431,7 @@ public class method {
 			try {
 				FileUtils.copyFile(screenShotFile, new File("C:\\TUTK_QA_TestTool\\TestReport\\"
 						+ TestCase.CaseList.get(CurrentCaseNumber) + "_" + month + day + hour + min + sec + ".jpg"));
-				System.out.println("[Log] " + "ScreenShoot Successfully!! (Name:CaseName+Month+Day+Hour+Minus+Second)");
+				System.out.println("[Log] " + "ScreenShot Successfully!! (Name:CaseName+Month+Day+Hour+Minus+Second)");
 
 			} catch (IOException e) {
 				;
