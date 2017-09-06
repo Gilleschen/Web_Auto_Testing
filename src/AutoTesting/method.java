@@ -50,10 +50,18 @@ public class method {
 
 	public static void main(String[] args) throws NoSuchMethodException, SecurityException, IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException, InstantiationException, IOException {
-
+		initial();
 		invokeFunction();
 		System.out.println("測試結束!!!!!!!!");
 		Process proc = Runtime.getRuntime().exec("explorer C:\\TUTK_QA_TestTool\\TestReport");// 開啟TestReport資料夾
+	}
+
+	public static void initial() {// 初始化CaseErrorList矩陣
+		for (int i = 0; i < CaseErrorList.length; i++) {
+			for (int j = 0; j < CaseErrorList[i].length; j++) {
+				CaseErrorList[i][j] = "";
+			}
+		}
 	}
 
 	public static void invokeFunction() throws NoSuchMethodException, SecurityException, IllegalAccessException,
@@ -243,7 +251,7 @@ public class method {
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
 				CommandError = false;// 若找不到指定元件，則設定CommandError=false
-				driver[i].quit();//若找不到指定元件，則關閉Browser
+				driver[i].quit();// 若找不到指定元件，則關閉Browser
 			}
 		}
 	}
@@ -258,7 +266,7 @@ public class method {
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
 				CommandError = false;// 若找不到指定元件，則設定CommandError=false
-				driver[i].quit();//若找不到指定元件，則關閉Browser
+				driver[i].quit();// 若找不到指定元件，則關閉Browser
 			}
 		}
 	}
@@ -273,7 +281,7 @@ public class method {
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
 				CommandError = false;// 若找不到指定元件，則設定CommandError=false
-				driver[i].quit();//若找不到指定元件，則關閉Browser
+				driver[i].quit();// 若找不到指定元件，則關閉Browser
 			}
 		}
 	}
@@ -288,7 +296,7 @@ public class method {
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
 				CommandError = false;// 若找不到指定元件，則設定CommandError=false
-				driver[i].quit();//若找不到指定元件，則關閉Browser
+				driver[i].quit();// 若找不到指定元件，則關閉Browser
 			}
 		}
 	}
@@ -307,7 +315,7 @@ public class method {
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
 				CommandError = false;// 若找不到指定元件，則設定CommandError=false
-				driver[i].quit();//若找不到指定元件，則關閉Browser
+				driver[i].quit();// 若找不到指定元件，則關閉Browser
 			}
 		}
 	}
@@ -326,7 +334,7 @@ public class method {
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
 				CommandError = false;// 若找不到指定元件，則設定CommandError=false
-				driver[i].quit();//若找不到指定元件，則關閉Browser
+				driver[i].quit();// 若找不到指定元件，則關閉Browser
 			}
 		}
 	}
