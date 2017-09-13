@@ -2,7 +2,7 @@
 
 #### 測試前設定：
 
-1. 下載Selenium Standalone Server及瀏覽器WebDriver (請參考<a href="http://www.seleniumhq.org/download/">Selenium Downloads</a>)
+1. 下載<a href="https://selenium-release.storage.googleapis.com/index.html?path=3.4/">selenium-server-standalone-3.4.0.jar</a>及瀏覽器WebDriver (請參考<a href="http://www.seleniumhq.org/download/">Selenium Downloads</a>)
 
 2. 下載<a href="https://github.com/Gilleschen/Web_Auto_Testing/raw/master/Web_Auto.jar">Web_Auto.jar</a>及<a href="https://github.com/Gilleschen/Web_Auto_Testing/raw/master/Web_TestScrpit.xlsm">Web_TestScript.xlsm</a>
 
