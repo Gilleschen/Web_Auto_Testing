@@ -106,3 +106,5 @@
 
 註3. 固定Selenium Node Port = 5555, maxInstances = 5
 
+註4. 僅支援Chrome, FireFox, Internet Explorer瀏覽器
+
