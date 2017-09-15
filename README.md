@@ -16,7 +16,7 @@
 
 4. 開啟Web_TestScript.xlsm並允許啟動巨集 (已建立Web_Infor、ExpectResult及說明工作表)
 
-5. Web_Infor工作表輸入Browser、BrowserDriverPath、TestURL、待測試腳本(以_TestScript結尾的工作表)、Web_Auto.jar路徑及Selenium Standalone Server.jar路徑，範例如下圖：
+5. Web_Infor工作表輸入Browser、BrowserDriverPath、TestURL、待測試腳本(以_TestScript結尾的工作表)、Web_Auto.jar路徑及selenium-server-standalone-3.4.0.jar路徑，範例如下圖：
 
 ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/web_infor.PNG)
 
