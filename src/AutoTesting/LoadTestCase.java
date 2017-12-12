@@ -11,6 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class LoadTestCase {
 	public ArrayList<ArrayList<String>> StepList = new ArrayList<ArrayList<String>>();// 所有測試案例的動作清單(2維陣列)
 	ArrayList<String> StepListData = new ArrayList<String>();// 單一測試案例的動作清單
+	ArrayList<String> CheckStepListData = new ArrayList<String>();// 去除StepListData內空白資料，更新單一測試案例的動作清單
 	public ArrayList<String> CaseList = new ArrayList<String>();// 所有測試案例的名稱清單
 	LoadWebInfor DeviceInformation = new LoadWebInfor();
 
@@ -52,8 +53,16 @@ public class LoadTestCase {
 						// 判斷單一測試案例是否結束，若是，則StepListData加入StepList
 						if (sheet.getRow(i).getCell(0).toString().equals("QuitAPP")
 								|| sheet.getRow(i).getCell(0).toString().equals("Quit")) {
-							StepList.add(StepListData);
+							
+							for (int j = 0; j < StepListData.size(); j++) {
+								if (StepListData.get(j).toString() != "") {
+									CheckStepListData.add(StepListData.get(j).toString());
+								}
+							}
+													
+							StepList.add(CheckStepListData);
 							StepListData = new ArrayList<String>();
+							CheckStepListData = new ArrayList<String>();
 						}
 						i++;
 					} while (!sheet.getRow(i).getCell(0).toString().equals(""));

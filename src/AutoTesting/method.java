@@ -32,19 +32,19 @@ public class method {
 	LoadExpectResult ExpectResult = new LoadExpectResult();
 
 	static String CaseErrorList[][] = new String[TestCase.CaseList.size()][TestCase.DeviceInformation.BrowserList
-			.size()];// ç´€éŒ„å„æ¡ˆä¾‹æ–¼å„è£ç½®ä¹‹æŒ‡ä»¤çµæœ (2ç¶­é™£åˆ—)CaseErrorList[CaseList][Devices]
-	String ErrorList[] = new String[TestCase.DeviceInformation.BrowserList.size()];// ç´€éŒ„å„è£ç½®ä¹‹æŒ‡ä»¤çµæœ
+			.size()];// ¬ö¿ı¦U®×¨Ò©ó¦U¸Ë¸m¤§«ü¥Oµ²ªG (2ºû°}¦C)CaseErrorList[CaseList][Devices]
+	String ErrorList[] = new String[TestCase.DeviceInformation.BrowserList.size()];// ¬ö¿ı¦U¸Ë¸m¤§«ü¥Oµ²ªG
 
 	static int port = 5555;
-	static int command_timeout = 15;// 30sec
-	static String appElemnt;// APPå…ƒä»¶åç¨±
-	static String appInput;// è¼¸å…¥å€¼
-	static String appInputXpath;// è¼¸å…¥å€¼çš„Xpathæ ¼å¼
+	static int command_timeout = 30;// 30sec
+	static String appElemnt;// APP¤¸¥ó¦WºÙ
+	static String appInput;// ¿é¤J­È
+	static String appInputXpath;// ¿é¤J­ÈªºXpath®æ¦¡
 	static WebDriver driver[] = new WebDriver[TestCase.DeviceInformation.BrowserList.size()];
 	static WebDriverWait[] wait = new WebDriverWait[TestCase.DeviceInformation.BrowserList.size()];
 	String element[] = new String[driver.length];
-	static int CurrentCaseNumber = -1;// ç›®å‰åŸ·è¡Œåˆ°ç¬¬å¹¾å€‹æ¸¬è©¦æ¡ˆåˆ—
-	static Boolean CommandError = true;// åˆ¤å®šåŸ·è¡Œçš„æŒ‡ä»¤æ˜¯å¦å‡ºç¾éŒ¯èª¤ï¼›tureç‚ºæ­£ç¢ºï¼›falseç‚ºéŒ¯èª¤
+	static int CurrentCaseNumber = -1;// ¥Ø«e°õ¦æ¨ì²Ä´X­Ó´ú¸Õ®×¦C
+	static Boolean CommandError = true;// §P©w°õ¦æªº«ü¥O¬O§_¥X²{¿ù»~¡Fture¬°¥¿½T¡Ffalse¬°¿ù»~
 	XSSFSheet Sheet;
 	XSSFWorkbook workBook;
 
@@ -52,14 +52,14 @@ public class method {
 			IllegalArgumentException, InvocationTargetException, InstantiationException, IOException {
 		initial();
 		invokeFunction();
-		System.out.println("æ¸¬è©¦çµæŸ!!!!!!!!");
-		Process proc = Runtime.getRuntime().exec("explorer C:\\TUTK_QA_TestTool\\TestReport");// é–‹å•ŸTestReportè³‡æ–™å¤¾
+		System.out.println("´ú¸Õµ²§ô!!!!!!!!");
+		Process proc = Runtime.getRuntime().exec("explorer C:\\TUTK_QA_TestTool\\TestReport");// ¶}±ÒTestReport¸ê®Æ§¨
 	}
 
-	public static void initial() {// åˆå§‹åŒ–CaseErrorListçŸ©é™£
+	public static void initial() {// ªì©l¤ÆCaseErrorList¯x°}
 		for (int i = 0; i < CaseErrorList.length; i++) {
 			for (int j = 0; j < CaseErrorList[i].length; j++) {
-				CaseErrorList[i][j] = "";//å¡«å…¥ç©ºå­—ä¸²ï¼Œé¿å…å–å€¼æ™‚ï¼Œå‡ºç¾éŒ¯èª¤
+				CaseErrorList[i][j] = "";//¶ñ¤JªÅ¦r¦ê¡AÁ×§K¨ú­È®É¡A¥X²{¿ù»~
 			}
 		}
 	}
@@ -71,11 +71,11 @@ public class method {
 		String methodName = null;
 
 		for (int CurrentCase = 0; CurrentCase < TestCase.StepList.size(); CurrentCase++) {
-			CommandError = true;// é è¨­CommandErrorç‚ºTrue
+			CommandError = true;// ¹w³]CommandError¬°True
 			for (int CurrentCaseStep = 0; CurrentCaseStep < TestCase.StepList.get(CurrentCase)
 					.size(); CurrentCaseStep++) {
 				if (!CommandError) {
-					break;// è‹¥ç›®å‰æ¸¬è©¦æ¡ˆä¾‹å‡ºç¾CommandError=falseï¼Œå‰‡è·³å‡ºç›®å‰æ¡ˆä¾‹ä¸¦åŸ·è¡Œä¸‹ä¸€å€‹æ¡ˆä¾‹
+					break;// ­Y¥Ø«e´ú¸Õ®×¨Ò¥X²{CommandError=false¡A«h¸õ¥X¥Ø«e®×¨Ò¨Ã°õ¦æ¤U¤@­Ó®×¨Ò
 				}
 				switch (TestCase.StepList.get(CurrentCase).get(CurrentCaseStep).toString()) {
 
@@ -169,7 +169,7 @@ public class method {
 	}
 
 	public void Byid_Result() {
-		boolean result[] = new boolean[driver.length];// æœªçµ¦å®šBooleanå€¼ï¼Œé è¨­ç‚ºFalse
+		boolean result[] = new boolean[driver.length];// ¥¼µ¹©wBoolean­È¡A¹w³]¬°False
 		boolean ErrorResult[] = new boolean[driver.length];
 
 		for (int i = 0; i < driver.length; i++) {
@@ -178,14 +178,14 @@ public class method {
 				element[i] = wait[i].until(ExpectedConditions.visibilityOfElementLocated(By.id(appElemnt))).getText();
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
-				element[i] = "ERROR";// æ‰¾ä¸åˆ°è©²ç‰©ä»¶ï¼Œå›å‚³Error
+				element[i] = "ERROR";// §ä¤£¨ì¸Óª«¥ó¡A¦^¶ÇError
 			}
 
 			if (element[i].equals("ERROR")) {
 				ErrorResult[i] = true;
 
 			} else {
-				// å›å‚³æ¸¬è©¦æ¡ˆä¾‹æ¸…å–®çš„åç¨±çµ¦ExpectResult.LoadExpectResultï¼Œä¸¦å­˜æ”¾æœŸæœ›çµæœè‡³ResultListæ¸…å–®
+				// ¦^¶Ç´ú¸Õ®×¨Ò²M³æªº¦WºÙµ¹ExpectResult.LoadExpectResult¡A¨Ã¦s©ñ´Á±æµ²ªG¦ÜResultList²M³æ
 				ExpectResult.LoadExpectResult(TestCase.CaseList.get(CurrentCaseNumber).toString());
 				for (int j = 0; j < ExpectResult.ResultList.size(); j++) {
 					if (element[i].equals(ExpectResult.ResultList.get(j)) == true) {
@@ -197,13 +197,13 @@ public class method {
 				}
 			}
 		}
-		SubMethod_Result(ErrorResult, result);// å‘¼å«submethod_resultå„²å­˜æ¸¬è©¦çµæœæ–¼Excel
+		SubMethod_Result(ErrorResult, result);// ©I¥ssubmethod_resultÀx¦s´ú¸Õµ²ªG©óExcel
 		// CurrentCaseNumber = CurrentCaseNumber + 1;
 
 	}
 
 	public void ByXpath_Result() {
-		boolean result[] = new boolean[driver.length];// æœªçµ¦å®šBooleanå€¼ï¼Œé è¨­ç‚ºFalse
+		boolean result[] = new boolean[driver.length];// ¥¼µ¹©wBoolean­È¡A¹w³]¬°False
 		boolean ErrorResult[] = new boolean[driver.length];
 
 		for (int i = 0; i < driver.length; i++) {
@@ -215,14 +215,14 @@ public class method {
 
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
-				element[i] = "ERROR";// æ‰¾ä¸åˆ°è©²ç‰©ä»¶ï¼Œå›å‚³Error
+				element[i] = "ERROR";// §ä¤£¨ì¸Óª«¥ó¡A¦^¶ÇError
 			}
 
 			if (element[i].equals("ERROR")) {
 				ErrorResult[i] = true;
 
 			} else {
-				// å›å‚³æ¸¬è©¦æ¡ˆä¾‹æ¸…å–®çš„åç¨±çµ¦ExpectResult.LoadExpectResultï¼Œä¸¦å­˜æ”¾æœŸæœ›çµæœè‡³ResultListæ¸…å–®
+				// ¦^¶Ç´ú¸Õ®×¨Ò²M³æªº¦WºÙµ¹ExpectResult.LoadExpectResult¡A¨Ã¦s©ñ´Á±æµ²ªG¦ÜResultList²M³æ
 				ExpectResult.LoadExpectResult(TestCase.CaseList.get(CurrentCaseNumber).toString());
 				for (int j = 0; j < ExpectResult.ResultList.size(); j++) {
 					if (element[i].equals(ExpectResult.ResultList.get(j)) == true) {
@@ -250,8 +250,8 @@ public class method {
 				CaseErrorList[CurrentCaseNumber] = ErrorList;
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
-				CommandError = false;// è‹¥æ‰¾ä¸åˆ°æŒ‡å®šå…ƒä»¶ï¼Œå‰‡è¨­å®šCommandError=false
-				driver[i].quit();// è‹¥æ‰¾ä¸åˆ°æŒ‡å®šå…ƒä»¶ï¼Œå‰‡é—œé–‰Browser
+				CommandError = false;// ­Y§ä¤£¨ì«ü©w¤¸¥ó¡A«h³]©wCommandError=false
+				driver[i].quit();// ­Y§ä¤£¨ì«ü©w¤¸¥ó¡A«hÃö³¬Browser
 			}
 		}
 	}
@@ -265,8 +265,8 @@ public class method {
 				CaseErrorList[CurrentCaseNumber] = ErrorList;
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
-				CommandError = false;// è‹¥æ‰¾ä¸åˆ°æŒ‡å®šå…ƒä»¶ï¼Œå‰‡è¨­å®šCommandError=false
-				driver[i].quit();// è‹¥æ‰¾ä¸åˆ°æŒ‡å®šå…ƒä»¶ï¼Œå‰‡é—œé–‰Browser
+				CommandError = false;// ­Y§ä¤£¨ì«ü©w¤¸¥ó¡A«h³]©wCommandError=false
+				driver[i].quit();// ­Y§ä¤£¨ì«ü©w¤¸¥ó¡A«hÃö³¬Browser
 			}
 		}
 	}
@@ -280,8 +280,8 @@ public class method {
 				CaseErrorList[CurrentCaseNumber] = ErrorList;
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
-				CommandError = false;// è‹¥æ‰¾ä¸åˆ°æŒ‡å®šå…ƒä»¶ï¼Œå‰‡è¨­å®šCommandError=false
-				driver[i].quit();// è‹¥æ‰¾ä¸åˆ°æŒ‡å®šå…ƒä»¶ï¼Œå‰‡é—œé–‰Browser
+				CommandError = false;// ­Y§ä¤£¨ì«ü©w¤¸¥ó¡A«h³]©wCommandError=false
+				driver[i].quit();// ­Y§ä¤£¨ì«ü©w¤¸¥ó¡A«hÃö³¬Browser
 			}
 		}
 	}
@@ -295,8 +295,8 @@ public class method {
 				CaseErrorList[CurrentCaseNumber] = ErrorList;
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
-				CommandError = false;// è‹¥æ‰¾ä¸åˆ°æŒ‡å®šå…ƒä»¶ï¼Œå‰‡è¨­å®šCommandError=false
-				driver[i].quit();// è‹¥æ‰¾ä¸åˆ°æŒ‡å®šå…ƒä»¶ï¼Œå‰‡é—œé–‰Browser
+				CommandError = false;// ­Y§ä¤£¨ì«ü©w¤¸¥ó¡A«h³]©wCommandError=false
+				driver[i].quit();// ­Y§ä¤£¨ì«ü©w¤¸¥ó¡A«hÃö³¬Browser
 			}
 		}
 	}
@@ -314,8 +314,8 @@ public class method {
 				CaseErrorList[CurrentCaseNumber] = ErrorList;
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
-				CommandError = false;// è‹¥æ‰¾ä¸åˆ°æŒ‡å®šå…ƒä»¶ï¼Œå‰‡è¨­å®šCommandError=false
-				driver[i].quit();// è‹¥æ‰¾ä¸åˆ°æŒ‡å®šå…ƒä»¶ï¼Œå‰‡é—œé–‰Browser
+				CommandError = false;// ­Y§ä¤£¨ì«ü©w¤¸¥ó¡A«h³]©wCommandError=false
+				driver[i].quit();// ­Y§ä¤£¨ì«ü©w¤¸¥ó¡A«hÃö³¬Browser
 			}
 		}
 	}
@@ -333,8 +333,8 @@ public class method {
 				CaseErrorList[CurrentCaseNumber] = ErrorList;
 			} catch (Exception e) {
 				System.out.println("[Error] Can't find " + appElemnt);
-				CommandError = false;// è‹¥æ‰¾ä¸åˆ°æŒ‡å®šå…ƒä»¶ï¼Œå‰‡è¨­å®šCommandError=false
-				driver[i].quit();// è‹¥æ‰¾ä¸åˆ°æŒ‡å®šå…ƒä»¶ï¼Œå‰‡é—œé–‰Browser
+				CommandError = false;// ­Y§ä¤£¨ì«ü©w¤¸¥ó¡A«h³]©wCommandError=false
+				driver[i].quit();// ­Y§ä¤£¨ì«ü©w¤¸¥ó¡A«hÃö³¬Browser
 			}
 		}
 	}
@@ -363,9 +363,9 @@ public class method {
 	public void Quit() {
 
 		for (int j = 0; j < driver.length; j++) {
-			driver[j].quit();// é›¢é–‹APPå¾Œï¼Œå¯«å…¥æ¸¬è©¦çµæœPassæˆ–Error
+			driver[j].quit();// Â÷¶}APP«á¡A¼g¤J´ú¸Õµ²ªGPass©ÎError
 
-			// é–‹å•ŸExcel
+			// ¶}±ÒExcel
 			try {
 				workBook = new XSSFWorkbook(
 						new FileInputStream("C:\\TUTK_QA_TestTool\\TestReport\\Web_TestReport.xlsm"));
@@ -374,22 +374,22 @@ public class method {
 			}
 			for (int i = 0; i < driver.length; i++) {
 
-				if (TestCase.DeviceInformation.BrowserList.get(i).toString().length() > 20) {// Excelå·¥ä½œè¡¨åç¨±æœ€å¸¸31å­—å…ƒå› ï¼Œæ•…éœ€åˆ¤æ–·BrowserNameé•·åº¦æ˜¯å¦å¤§æ–¼31
-					char[] NewBrowserName = new char[20];// å› éœ€åŒ…å«_TestReportå­—ä¸²(å…±11å­—å…ƒ)ï¼Œæ•…è¨­å®š20ä½å­—å…ƒé™£åˆ—(31-11)
-					TestCase.DeviceInformation.BrowserList.get(i).toString().getChars(0, 20, NewBrowserName, 0);// å–å‡ºBrowserNameå‰20å­—å…ƒçµ¦NewBrowserName
-					Sheet = workBook.getSheet(String.valueOf(NewBrowserName) + "_TestReport");// æ ¹æ“šNewUdidï¼ŒæŒ‡å®šæŸå°è£ç½®çš„TestReport
+				if (TestCase.DeviceInformation.BrowserList.get(i).toString().length() > 20) {// Excel¤u§@ªí¦WºÙ³Ì±`31¦r¤¸¦]¡A¬G»İ§PÂ_BrowserNameªø«×¬O§_¤j©ó31
+					char[] NewBrowserName = new char[20];// ¦]»İ¥]§t_TestReport¦r¦ê(¦@11¦r¤¸)¡A¬G³]©w20¦ì¦r¤¸°}¦C(31-11)
+					TestCase.DeviceInformation.BrowserList.get(i).toString().getChars(0, 20, NewBrowserName, 0);// ¨ú¥XBrowserName«e20¦r¤¸µ¹NewBrowserName
+					Sheet = workBook.getSheet(String.valueOf(NewBrowserName) + "_TestReport");// ®Ú¾ÚNewUdid¡A«ü©w¬Y¥x¸Ë¸mªºTestReport
 					// sheet
 				} else {
-					Sheet = workBook.getSheet(TestCase.DeviceInformation.BrowserList.get(i).toString() + "_TestReport");// æŒ‡å®šæŸå°è£ç½®çš„TestReport
+					Sheet = workBook.getSheet(TestCase.DeviceInformation.BrowserList.get(i).toString() + "_TestReport");// «ü©w¬Y¥x¸Ë¸mªºTestReport
 																														// sheet
 				}
 
-				if (CaseErrorList[CurrentCaseNumber][i].equals("Pass")) {// å–å‡ºCaseErrorListä¹‹ç¬¬CurrentCaseNumberå€‹æ¸¬é …ä¸­çš„ç¬¬iå°è¡Œå‹•è£ç½®ä¹‹çµæœ
-					Sheet.getRow(CurrentCaseNumber + 1).getCell(1).setCellValue("Pass");// å¡«å…¥ç¬¬iå°è¡Œå‹•è£ç½®ä¹‹ç¬¬CurrentCaseNumberå€‹æ¸¬é …çµæœPass
+				if (CaseErrorList[CurrentCaseNumber][i].equals("Pass")) {// ¨ú¥XCaseErrorList¤§²ÄCurrentCaseNumber­Ó´ú¶µ¤¤ªº²Äi¥x¦æ°Ê¸Ë¸m¤§µ²ªG
+					Sheet.getRow(CurrentCaseNumber + 1).getCell(1).setCellValue("Pass");// ¶ñ¤J²Äi¥x¦æ°Ê¸Ë¸m¤§²ÄCurrentCaseNumber­Ó´ú¶µµ²ªGPass
 				}
 
 			}
-			// åŸ·è¡Œå¯«å…¥Excelå¾Œçš„å­˜æª”å‹•ä½œ
+			// °õ¦æ¼g¤JExcel«áªº¦sÀÉ°Ê§@
 			try {
 				FileOutputStream out = new FileOutputStream(
 						new File("C:\\TUTK_QA_TestTool\\TestReport\\Web_TestReport.xlsm"));
@@ -405,20 +405,20 @@ public class method {
 	}
 
 	public void Sleep() {
-		String NewString = "";// æ–°å­—ä¸²
-		char[] r = { '.' };// å°æ•¸é»å­—å…ƒ
-		char[] c = appInput.toCharArray();// å°‡å­—ä¸²è½‰æˆå­—å…ƒé™£åˆ—
+		String NewString = "";// ·s¦r¦ê
+		char[] r = { '.' };// ¤p¼ÆÂI¦r¤¸
+		char[] c = appInput.toCharArray();// ±N¦r¦êÂà¦¨¦r¤¸°}¦C
 		for (int i = 0; i < c.length; i++) {
-			if (c[i] != r[0]) {// åˆ¤æ–·å­—å…ƒæ˜¯å¦ç‚ºå°æ•¸é»
-				NewString = NewString + c[i];// å¦ï¼Œå°‡å­—å…ƒçµ„åˆæˆæ–°å­—ä¸²
+			if (c[i] != r[0]) {// §PÂ_¦r¤¸¬O§_¬°¤p¼ÆÂI
+				NewString = NewString + c[i];// §_¡A±N¦r¤¸²Õ¦X¦¨·s¦r¦ê
 			} else {
-				break;// æ˜¯ï¼Œè·³å‡ºè¿´åœˆ
+				break;// ¬O¡A¸õ¥X°j°é
 			}
 		}
 
 		try {
 			System.out.println("[driver] [start] Sleep(): " + NewString + " second...");
-			Thread.sleep(Integer.valueOf(NewString) * 1000);// å°‡å­—ä¸²è½‰æˆæ•´æ•¸
+			Thread.sleep(Integer.valueOf(NewString) * 1000);// ±N¦r¦êÂà¦¨¾ã¼Æ
 			System.out.println("[driver] [end] Sleep");
 		} catch (Exception e) {
 			;
@@ -448,7 +448,7 @@ public class method {
 	}
 
 	public void SubMethod_Result(boolean ErrorResult[], boolean result[]) {
-		// é–‹å•ŸExcel
+		// ¶}±ÒExcel
 		try {
 			workBook = new XSSFWorkbook(new FileInputStream("C:\\TUTK_QA_TestTool\\TestReport\\Web_TestReport.xlsm"));
 		} catch (Exception e) {
@@ -456,13 +456,13 @@ public class method {
 		}
 		for (int i = 0; i < driver.length; i++) {
 
-			if (TestCase.DeviceInformation.BrowserList.get(i).toString().length() > 20) {// Excelå·¥ä½œè¡¨åç¨±æœ€å¸¸31å­—å…ƒå› ï¼Œæ•…éœ€åˆ¤æ–·UDIDé•·åº¦æ˜¯å¦å¤§æ–¼31
-				char[] NewUdid = new char[20];// å› éœ€åŒ…å«_TestReportå­—ä¸²(å…±11å­—å…ƒ)ï¼Œæ•…è¨­å®š20ä½å­—å…ƒé™£åˆ—(31-11)
-				TestCase.DeviceInformation.BrowserList.get(i).toString().getChars(0, 20, NewUdid, 0);// å–å‡ºUDIDå‰20å­—å…ƒçµ¦NewUdid
-				Sheet = workBook.getSheet(String.valueOf(NewUdid) + "_TestReport");// æ ¹æ“šNewUdidï¼ŒæŒ‡å®šæŸå°è£ç½®çš„TestReport
+			if (TestCase.DeviceInformation.BrowserList.get(i).toString().length() > 20) {// Excel¤u§@ªí¦WºÙ³Ì±`31¦r¤¸¦]¡A¬G»İ§PÂ_UDIDªø«×¬O§_¤j©ó31
+				char[] NewUdid = new char[20];// ¦]»İ¥]§t_TestReport¦r¦ê(¦@11¦r¤¸)¡A¬G³]©w20¦ì¦r¤¸°}¦C(31-11)
+				TestCase.DeviceInformation.BrowserList.get(i).toString().getChars(0, 20, NewUdid, 0);// ¨ú¥XUDID«e20¦r¤¸µ¹NewUdid
+				Sheet = workBook.getSheet(String.valueOf(NewUdid) + "_TestReport");// ®Ú¾ÚNewUdid¡A«ü©w¬Y¥x¸Ë¸mªºTestReport
 																					// sheet
 			} else {
-				Sheet = workBook.getSheet(TestCase.DeviceInformation.BrowserList.get(i).toString() + "_TestReport");// æŒ‡å®šæŸå°è£ç½®çš„TestReport
+				Sheet = workBook.getSheet(TestCase.DeviceInformation.BrowserList.get(i).toString() + "_TestReport");// «ü©w¬Y¥x¸Ë¸mªºTestReport
 																													// sheet
 			}
 
@@ -474,7 +474,7 @@ public class method {
 				Sheet.getRow(CurrentCaseNumber + 1).createCell(1).setCellValue("Fail");
 			}
 		}
-		// åŸ·è¡Œå¯«å…¥Excelå¾Œçš„å­˜æª”å‹•ä½œ
+		// °õ¦æ¼g¤JExcel«áªº¦sÀÉ°Ê§@
 		try {
 			FileOutputStream out = new FileOutputStream(
 					new File("C:\\TUTK_QA_TestTool\\TestReport\\Web_TestReport.xlsm"));
