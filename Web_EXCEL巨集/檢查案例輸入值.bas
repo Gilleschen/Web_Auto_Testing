@@ -62,6 +62,18 @@ Function CheckValue()
                         CheckValue = checkXpath(sheetname, i, j)
                         If CheckValue = False Then Exit Function
                         
+                    Case "Byid_invisibility"
+                        Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
+                        CheckValue = checkClick(sheetname, i, j, id)
+                        If CheckValue = False Then Exit Function
+                        
+                    Case "ByXpath_invisibility"
+                        Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
+                        CheckValue = checkClick(sheetname, i, j, xpath)
+                        If CheckValue = False Then Exit Function
+                        CheckValue = checkXpath(sheetname, i, j)
+                        If CheckValue = False Then Exit Function
+                        
                     Case "Launch"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         If Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B") <> "" Then
