@@ -104,11 +104,11 @@
 
 ##### 備註：
 
-註1. Selenium Client Version:3.4.0
+* Selenium Client Version:3.4.0
 
-註2. Excel欄位若輸入純數字(e.g. 8888)，請轉換為文字格式，皆於數字前面加入單引號 (e.g. '8888)或執行增益集的檢查案例輸入值功能
+* Excel欄位若輸入純數字(e.g. 8888)，請轉換為文字格式，皆於數字前面加入單引號 (e.g. '8888)或執行增益集的檢查案例輸入值功能
 
-註3. 固定Selenium Node Port = 5555, maxInstances = 5
+* 固定Selenium Node Port = 5555, maxInstances = 5
 
-註4. 僅支援Chrome, FireFox, Internet Explorer瀏覽器
+* 僅支援Chrome, FireFox, Internet Explorer瀏覽器
 
