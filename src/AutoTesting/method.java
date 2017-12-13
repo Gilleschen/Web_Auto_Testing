@@ -59,7 +59,7 @@ public class method {
 	public static void initial() {// 初始化CaseErrorList矩陣
 		for (int i = 0; i < CaseErrorList.length; i++) {
 			for (int j = 0; j < CaseErrorList[i].length; j++) {
-				CaseErrorList[i][j] = "";//填入空字串，避免取值時，出現錯誤
+				CaseErrorList[i][j] = "";// 填入空字串，避免取值時，出現錯誤
 			}
 		}
 	}
@@ -121,14 +121,14 @@ public class method {
 					CurrentCaseStep = CurrentCaseStep + 1;
 					break;
 
-				case "Byid_Result":
-					methodName = "Byid_Result";
+				case "Byid_VerifyText":
+					methodName = "Byid_VerifyText";
 					appElemnt = TestCase.StepList.get(CurrentCase).get(CurrentCaseStep + 1);
 					CurrentCaseStep = CurrentCaseStep + 1;
 					break;
 
-				case "ByXpath_Result":
-					methodName = "ByXpath_Result";
+				case "ByXpath_VerifyText":
+					methodName = "ByXpath_VerifyText";
 					appElemnt = TestCase.StepList.get(CurrentCase).get(CurrentCaseStep + 1);
 					CurrentCaseStep = CurrentCaseStep + 1;
 					break;
@@ -151,6 +151,18 @@ public class method {
 					CurrentCaseStep = CurrentCaseStep + 1;
 					break;
 
+				case "Byid_invisibility":
+					methodName = "Byid_invisibility";
+					appElemnt = TestCase.StepList.get(CurrentCase).get(CurrentCaseStep + 1);
+					CurrentCaseStep = CurrentCaseStep + 1;
+					break;
+
+				case "ByXpath_invisibility":
+					methodName = "ByXpath_invisibility";
+					appElemnt = TestCase.StepList.get(CurrentCase).get(CurrentCaseStep + 1);
+					CurrentCaseStep = CurrentCaseStep + 1;
+					break;
+
 				case "ScreenShot":
 					methodName = "ScreenShot";
 					break;
@@ -168,16 +180,17 @@ public class method {
 		}
 	}
 
-	public void Byid_Result() {
+	public void Byid_VerifyText() {
 		boolean result[] = new boolean[driver.length];// 未給定Boolean值，預設為False
 		boolean ErrorResult[] = new boolean[driver.length];
 
 		for (int i = 0; i < driver.length; i++) {
 			try {
+				System.out.println("[info] Executing:|Byid_VerifyText|" + appElemnt + "|");
 				wait[i] = new WebDriverWait(driver[i], command_timeout);
 				element[i] = wait[i].until(ExpectedConditions.visibilityOfElementLocated(By.id(appElemnt))).getText();
 			} catch (Exception e) {
-				System.out.println("[Error] Can't find " + appElemnt);
+				System.err.println("[Error] Can't find " + appElemnt);
 				element[i] = "ERROR";// 找不到該物件，回傳Error
 			}
 
@@ -202,19 +215,20 @@ public class method {
 
 	}
 
-	public void ByXpath_Result() {
+	public void ByXpath_VerifyText() {
 		boolean result[] = new boolean[driver.length];// 未給定Boolean值，預設為False
 		boolean ErrorResult[] = new boolean[driver.length];
 
 		for (int i = 0; i < driver.length; i++) {
 
 			try {
+				System.out.println("[info] Executing:|ByXpath_VerifyText|" + appElemnt + "|");
 				wait[i] = new WebDriverWait(driver[i], command_timeout);
 				element[i] = wait[i].until(ExpectedConditions.visibilityOfElementLocated(By.xpath(appElemnt)))
 						.getText();
 
 			} catch (Exception e) {
-				System.out.println("[Error] Can't find " + appElemnt);
+				System.err.println("[Error] Can't find " + appElemnt);
 				element[i] = "ERROR";// 找不到該物件，回傳Error
 			}
 
@@ -244,12 +258,13 @@ public class method {
 	public void Byid_Click() {
 		for (int i = 0; i < driver.length; i++) {
 			try {
+				System.out.println("[info] Executing:|Byid_Click|" + appElemnt + "|");
 				wait[i] = new WebDriverWait(driver[i], command_timeout);
 				wait[i].until(ExpectedConditions.visibilityOfElementLocated(By.id(appElemnt))).click();
 				ErrorList[i] = "Pass";
 				CaseErrorList[CurrentCaseNumber] = ErrorList;
 			} catch (Exception e) {
-				System.out.println("[Error] Can't find " + appElemnt);
+				System.err.println("[Error] Can't find " + appElemnt);
 				CommandError = false;// 若找不到指定元件，則設定CommandError=false
 				driver[i].quit();// 若找不到指定元件，則關閉Browser
 			}
@@ -259,12 +274,13 @@ public class method {
 	public void ByXpath_Click() {
 		for (int i = 0; i < driver.length; i++) {
 			try {
+				System.out.println("[info] Executing:|ByXpath_Click|" + appElemnt + "|");
 				wait[i] = new WebDriverWait(driver[i], command_timeout);
 				wait[i].until(ExpectedConditions.visibilityOfElementLocated(By.xpath(appElemnt))).click();
 				ErrorList[i] = "Pass";
 				CaseErrorList[CurrentCaseNumber] = ErrorList;
 			} catch (Exception e) {
-				System.out.println("[Error] Can't find " + appElemnt);
+				System.err.println("[Error] Can't find " + appElemnt);
 				CommandError = false;// 若找不到指定元件，則設定CommandError=false
 				driver[i].quit();// 若找不到指定元件，則關閉Browser
 			}
@@ -274,12 +290,13 @@ public class method {
 	public void Byid_SendKey() {
 		for (int i = 0; i < driver.length; i++) {
 			try {
+				System.out.println("[info] Executing:|Byid_SendKey|" + appElemnt + "|" + appInput + "|");
 				wait[i] = new WebDriverWait(driver[i], command_timeout);
 				wait[i].until(ExpectedConditions.visibilityOfElementLocated(By.id(appElemnt))).sendKeys(appInput);
 				ErrorList[i] = "Pass";
 				CaseErrorList[CurrentCaseNumber] = ErrorList;
 			} catch (Exception e) {
-				System.out.println("[Error] Can't find " + appElemnt);
+				System.err.println("[Error] Can't find " + appElemnt);
 				CommandError = false;// 若找不到指定元件，則設定CommandError=false
 				driver[i].quit();// 若找不到指定元件，則關閉Browser
 			}
@@ -289,12 +306,13 @@ public class method {
 	public void ByXpath_SendKey() {
 		for (int i = 0; i < driver.length; i++) {
 			try {
+				System.out.println("[info] Executing:|ByXpath_SendKey|" + appElemnt + "|" + appInput + "|");
 				wait[i] = new WebDriverWait(driver[i], command_timeout);
 				wait[i].until(ExpectedConditions.visibilityOfElementLocated(By.xpath(appElemnt))).sendKeys(appInput);
 				ErrorList[i] = "Pass";
 				CaseErrorList[CurrentCaseNumber] = ErrorList;
 			} catch (Exception e) {
-				System.out.println("[Error] Can't find " + appElemnt);
+				System.err.println("[Error] Can't find " + appElemnt);
 				CommandError = false;// 若找不到指定元件，則設定CommandError=false
 				driver[i].quit();// 若找不到指定元件，則關閉Browser
 			}
@@ -304,6 +322,7 @@ public class method {
 	public void ByXpath_Scroll() {
 		for (int i = 0; i < driver.length; i++) {
 			try {
+				System.out.println("[info] Executing:|ByXpath_Scroll|" + appElemnt + "|");
 				wait[i] = new WebDriverWait(driver[i], command_timeout);
 				WebElement target = wait[i].until(ExpectedConditions.presenceOfElementLocated((By.xpath(appElemnt))));
 				Actions actions = new Actions(driver[i]);
@@ -313,7 +332,7 @@ public class method {
 				ErrorList[i] = "Pass";
 				CaseErrorList[CurrentCaseNumber] = ErrorList;
 			} catch (Exception e) {
-				System.out.println("[Error] Can't find " + appElemnt);
+				System.err.println("[Error] Can't find " + appElemnt);
 				CommandError = false;// 若找不到指定元件，則設定CommandError=false
 				driver[i].quit();// 若找不到指定元件，則關閉Browser
 			}
@@ -323,6 +342,7 @@ public class method {
 	public void Byid_Scroll() {
 		for (int i = 0; i < driver.length; i++) {
 			try {
+				System.out.println("[info] Executing:|Byid_Scroll|" + appElemnt + "|");
 				wait[i] = new WebDriverWait(driver[i], command_timeout);
 				WebElement target = wait[i].until(ExpectedConditions.presenceOfElementLocated((By.id(appElemnt))));
 				Actions actions = new Actions(driver[i]);
@@ -332,7 +352,43 @@ public class method {
 				ErrorList[i] = "Pass";
 				CaseErrorList[CurrentCaseNumber] = ErrorList;
 			} catch (Exception e) {
-				System.out.println("[Error] Can't find " + appElemnt);
+				System.err.println("[Error] Can't find " + appElemnt);
+				CommandError = false;// 若找不到指定元件，則設定CommandError=false
+				driver[i].quit();// 若找不到指定元件，則關閉Browser
+			}
+		}
+	}
+
+	public void ByXpath_invisibility() {
+
+		for (int i = 0; i < driver.length; i++) {
+
+			try {
+				System.out.println("[info] Executing:|ByXpath_invisibility|" + appElemnt + "|");
+				wait[i] = new WebDriverWait(driver[i], command_timeout);
+				wait[i].until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(appElemnt)));
+				ErrorList[i] = "Pass";
+				CaseErrorList[CurrentCaseNumber] = ErrorList;
+			} catch (Exception e) {
+				System.err.println("[Error] Can't find " + appElemnt);
+				CommandError = false;// 若找不到指定元件，則設定CommandError=false
+				driver[i].quit();// 若找不到指定元件，則關閉Browser
+			}
+		}
+	}
+
+	public void Byid_invisibility() {
+
+		for (int i = 0; i < driver.length; i++) {
+
+			try {
+				System.out.println("[info] Executing:|Byid_invisibility|" + appElemnt + "|");
+				wait[i] = new WebDriverWait(driver[i], command_timeout);
+				wait[i].until(ExpectedConditions.invisibilityOfElementLocated(By.id(appElemnt)));
+				ErrorList[i] = "Pass";
+				CaseErrorList[CurrentCaseNumber] = ErrorList;
+			} catch (Exception e) {
+				System.err.println("[Error] Can't find " + appElemnt);
 				CommandError = false;// 若找不到指定元件，則設定CommandError=false
 				driver[i].quit();// 若找不到指定元件，則關閉Browser
 			}
@@ -344,17 +400,20 @@ public class method {
 		DesiredCapabilities cap[] = new DesiredCapabilities[TestCase.DeviceInformation.BrowserList.size()];
 
 		for (int i = 0; i < driver.length; i++) {
+
 			cap[i] = new DesiredCapabilities();
 			cap[i].setBrowserName(TestCase.DeviceInformation.BrowserList.get(i));
 
 			try {
+				System.out.println("[info] Executing:|Launch|" + TestCase.DeviceInformation.BrowserList.get(i) + "|"
+						+ TestCase.DeviceInformation.URL + "|");
 				driver[i] = new RemoteWebDriver(new URL("http://localhost:" + port + "/wd/hub"), cap[i]);
 				driver[i].manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 				driver[i].manage().window().maximize();
 				driver[i].get(TestCase.DeviceInformation.URL);
 
 			} catch (Exception e1) {
-				System.out.println("[Error] Can't launch " + TestCase.DeviceInformation.BrowserList.get(i).toString());
+				System.err.println("[Error] Can't launch " + TestCase.DeviceInformation.BrowserList.get(i).toString());
 			}
 			// port++;
 		}
@@ -363,6 +422,7 @@ public class method {
 	public void Quit() {
 
 		for (int j = 0; j < driver.length; j++) {
+			System.out.println("[info] Executing:|Quit|");
 			driver[j].quit();// 離開APP後，寫入測試結果Pass或Error
 
 			// 開啟Excel
@@ -397,7 +457,7 @@ public class method {
 				out.close();
 				workBook.close();
 			} catch (Exception e) {
-				System.out.println("[Error] Can't find C:\\TUTK_QA_TestTool\\TestReport\\Web_TestReport.xlsm");
+				System.err.println("[Error] Can't find C:\\TUTK_QA_TestTool\\TestReport\\Web_TestReport.xlsm");
 			}
 
 		}
@@ -417,7 +477,7 @@ public class method {
 		}
 
 		try {
-			System.out.println("[driver] [start] Sleep(): " + NewString + " second...");
+			System.out.println("[info] Executing:|Sleep|" + NewString + " second..." + "|");
 			Thread.sleep(Integer.valueOf(NewString) * 1000);// 將字串轉成整數
 			System.out.println("[driver] [end] Sleep");
 		} catch (Exception e) {
@@ -434,15 +494,18 @@ public class method {
 		String min = Integer.toString(date.get(Calendar.MINUTE));
 		String sec = Integer.toString(date.get(Calendar.SECOND));
 		for (int i = 0; i < driver.length; i++) {
-			File screenShotFile = (File) ((TakesScreenshot) driver[i]).getScreenshotAs(OutputType.FILE);
 
 			try {
+				File screenShotFile = (File) ((TakesScreenshot) driver[i]).getScreenshotAs(OutputType.FILE);
+				System.out.println("[info] Executing:|ScreenShot|");
 				FileUtils.copyFile(screenShotFile, new File("C:\\TUTK_QA_TestTool\\TestReport\\"
 						+ TestCase.CaseList.get(CurrentCaseNumber) + "_" + month + day + hour + min + sec + ".jpg"));
 				System.out.println("[Log] " + "ScreenShot Successfully!! (Name:CaseName+Month+Day+Hour+Minus+Second)");
 
 			} catch (IOException e) {
-				;
+				System.err.println("[Error]Fail to ScreenShot");
+				CommandError = false;// 若找不到指定元件，則設定CommandError=false
+				driver[i].quit();// 若找不到指定元件，則關閉Browser
 			}
 		}
 	}

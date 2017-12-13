@@ -93,13 +93,13 @@ Function CheckValue()
                             Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B").Interior.Pattern = xlNone
                             CheckValue = True
                         End If
-                    Case "Byid_Result"
+                    Case "Byid_VerifyText"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         'If Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B") = "" Then x = MsgBox(sheetname & "中，第" & j & "行缺少元件id", 0 + 16, "Error")
                         CheckValue = checkResult(sheetname, i, j, id)
                         If CheckValue = False Then Exit Function
                         
-                    Case "ByXpath_Result"
+                    Case "ByXpath_VerifyText"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         'If Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B") = "" Then x = MsgBox(sheetname & "中，第" & j & "行缺少元件id", 0 + 16, "Error")
                         CheckValue = checkResult(sheetname, i, j, xpath)
@@ -329,7 +329,7 @@ Function checkResult(sheetname, i, j, status)
         End If
         
         If Left(Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B"), 5) = "//*[@" Then
-            x = MsgBox(sheetname & "中，第" & j & "使用Byid_Result，卻輸入Xpath", 0 + 16, "Error")
+            x = MsgBox(sheetname & "中，第" & j & "使用Byid_VerifyText，卻輸入Xpath", 0 + 16, "Error")
             Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B").Interior.Color = RGB(255, 0, 0)
             checkResult = False
             Exit Function

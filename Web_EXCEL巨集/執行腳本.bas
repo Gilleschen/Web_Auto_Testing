@@ -16,7 +16,7 @@ Sub RunScript()
     
     If CheckAPPandDeviceResult = True And CheckValueResult = True And CheckCommandResult = True Then
         
-        LaucnhHub = "java -jar " & Sheets("Web_Infor").Cells(2, "F") & " -role hub"
+        LaucnhHub = "java -jar " & Sheets("Web_Infor").Cells(2, "G") & " -role hub"
         r = Shell(Environ("windir") & "\system32\cmd.exe cmd/k" & LaucnhHub, 1) '啟動Selenium Server
         LaunchNode = "java"
         i = 2
@@ -36,12 +36,12 @@ Sub RunScript()
         
         i = i + 1
         Loop Until Sheets("Web_Infor").Cells(i, "A") = ""
-        LaunchNode = LaunchNode & " -jar " & Sheets("Web_Infor").Cells(2, "F") & " -role node -hub http://localhost:4444/grid/register" & Json '彙整Selenium node指令
-        'LaunchNode = LaunchNode & " -jar " & Sheets("Web_Infor").Cells(2, "F") & " -port 5556" & " -role node -hub http://localhost:4444/grid/register" & Json '彙整Selenium node指令
+        LaunchNode = LaunchNode & " -jar " & Sheets("Web_Infor").Cells(2, "G") & " -role node -hub http://localhost:4444/grid/register" & Json '彙整Selenium node指令
+        'LaunchNode = LaunchNode & " -jar " & Sheets("Web_Infor").Cells(2, "G") & " -port 5556" & " -role node -hub http://localhost:4444/grid/register" & Json '彙整Selenium node指令
         r = Shell(Environ("windir") & "\system32\cmd.exe cmd/k" & LaunchNode, 1) '啟動Selenium node
         
         Application.Wait Now() + TimeValue("00:00:03") '暫緩3秒，等待Server及Node
-        Jar = "java -jar " & Sheets("Web_Infor").Cells(2, "E")
+        Jar = "java -jar " & Sheets("Web_Infor").Cells(2, "F")
         r = Shell(Environ("windir") & "\system32\cmd.exe cmd/k" & Jar, 1) '開始測試
         
     End If
