@@ -24,21 +24,15 @@
 
         CaseName=>測試案列名稱(各案列開始時第一個填寫項目，必填!!!)
 
-        Byid_Click=>搜尋元件id並點擊元件
+        Byid_Click/ByXpath_Click==>根據id/Xpath搜尋元件並點擊元件
 
-        Byid_Result=>搜尋元件id並比對ExpectResult內容
+        Byid_Result/ByXpath_Result=>根據id/Xpath搜尋元件並比對ExpectResult內容
 
-        Byid_SendKey=>搜尋元件id並輸入數值或字串
+        Byid_SendKey/ByXpath_SendKey=>根據id/Xpath搜尋元件並輸入數值或字串
 
-        Byid_Wait=>等待並搜尋元件id
-
-        ByXpath_Click=>搜尋元件xpath並點擊元件
-
-        ByXpath_Result=>搜尋元件xpath並比對ExpectResult內容
-
-        ByXpath_SendKey=>搜尋元件xpath並輸入數值或字串
-
-        ByXpath_Wait=>等待並搜尋元件xpath
+        Byid_Wait/ByXpath_Wait=>根據id/Xpath搜尋元件並等待元件出現
+        
+        Byid_invisibility/ByXpath_invisibility=>根據id/Xpath搜尋元件並等待元件消失
 
         Launch=>開啟瀏覽器並啟動指定的URL網址
 
