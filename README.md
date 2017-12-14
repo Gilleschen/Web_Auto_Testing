@@ -2,7 +2,7 @@
 
 #### 測試前設定：
 
-1. 下載<a href="https://selenium-release.storage.googleapis.com/index.html?path=3.4/">selenium-server-standalone-3.4.0.jar</a>及瀏覽器WebDriver (請參考<a href="http://www.seleniumhq.org/download/">Selenium Downloads</a>)
+1. 下載selenium-server-standalone-3.8.1.jar</a>及瀏覽器WebDriver (請參考<a href="http://www.seleniumhq.org/download/">Selenium Downloads</a>)
 
 2. 下載<a href="https://github.com/Gilleschen/Web_Auto_Testing/raw/master/Web_Auto.jar">Web_Auto.jar</a>及<a href="https://github.com/Gilleschen/Web_Auto_Testing/raw/master/Web_TestScrpit.xlsm">Web_TestScript.xlsm</a>
 
@@ -104,7 +104,7 @@
 
 ##### 備註：
 
-* Selenium Client Version:3.4.0
+* Selenium Client Version:3.8.1
 
 * Excel欄位若輸入純數字(e.g. 8888)，請轉換為文字格式，皆於數字前面加入單引號 (e.g. '8888)或執行增益集的檢查案例輸入值功能
 
