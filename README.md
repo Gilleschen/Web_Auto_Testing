@@ -6,7 +6,7 @@
 
 2. 下載<a href="https://github.com/Gilleschen/Web_Auto_Testing/raw/master/Web_Auto.jar">Web_Auto.jar</a>及<a href="https://github.com/Gilleschen/Web_Auto_Testing/raw/master/Web_TestScrpit.xlsm">Web_TestScript.xlsm</a>
 
-#### 測試腳本建立說明：
+#### 測試腳本建立流程：
 
 1. 於C:\建立TUTK_QA_TestTool資料夾 (C:\TUTK_QA_TestTool)
 
