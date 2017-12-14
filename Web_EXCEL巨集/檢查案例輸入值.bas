@@ -30,11 +30,13 @@ Function CheckValue()
                     Case "Byid_Click"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         CheckValue = checkClick(sheetname, i, j, id)
+                        CheckValue = checkExcessData(sheetname, i, j, "C")
                         If CheckValue = False Then Exit Function
                     
                     Case "ByXpath_Click"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         CheckValue = checkClick(sheetname, i, j, xpath)
+                        CheckValue = checkExcessData(sheetname, i, j, "C")
                         'CheckValue = checkXpath(sheetname, i, j)
                         If CheckValue = False Then Exit Function
                         
@@ -42,47 +44,54 @@ Function CheckValue()
                     Case "Byid_Clear"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         CheckValue = checkClick(sheetname, i, j, id)
+                        CheckValue = checkExcessData(sheetname, i, j, "C")
                         If CheckValue = False Then Exit Function
                     
                     Case "ByXpath_Clear"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         CheckValue = checkClick(sheetname, i, j, xpath)
+                        CheckValue = checkExcessData(sheetname, i, j, "C")
                         'CheckValue = checkXpath(sheetname, i, j)
                         If CheckValue = False Then Exit Function
 
                     Case "Byid_SendKey"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         CheckValue = checkSendKey(sheetname, i, j, id)
+                        CheckValue = checkExcessData(sheetname, i, j, "D")
                         If CheckValue = False Then Exit Function
                                             
                     Case "ByXpath_SendKey"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         CheckValue = checkSendKey(sheetname, i, j, xpath)
+                        CheckValue = checkExcessData(sheetname, i, j, "D")
                         If CheckValue = False Then Exit Function
                         'CheckValue = checkXpath(sheetname, i, j)
-                        If CheckValue = False Then Exit Function
+                        
                     
                     Case "Byid_Scroll"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         CheckValue = checkScroll(sheetname, i, j, id)
+                        CheckValue = checkExcessData(sheetname, i, j, "C")
                         If CheckValue = False Then Exit Function
                         
                     Case "ByXpath_Scroll"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         CheckValue = checkScroll(sheetname, i, j, xpath)
-                        If CheckValue = False Then Exit Function
+                        CheckValue = checkExcessData(sheetname, i, j, "C")
+                                               
                        'CheckValue = checkXpath(sheetname, i, j)
                         If CheckValue = False Then Exit Function
                         
                     Case "Byid_invisibility"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         CheckValue = checkClick(sheetname, i, j, id)
+                        CheckValue = checkExcessData(sheetname, i, j, "C")
                         If CheckValue = False Then Exit Function
                         
                     Case "ByXpath_invisibility"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         CheckValue = checkClick(sheetname, i, j, xpath)
-                        If CheckValue = False Then Exit Function
+                        CheckValue = checkExcessData(sheetname, i, j, "C")
                         'CheckValue = checkXpath(sheetname, i, j)
                         If CheckValue = False Then Exit Function
                         
@@ -161,29 +170,30 @@ Function CheckValue()
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         'If Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B") = "" Then x = MsgBox(sheetname & "中，第" & j & "行缺少元件id", 0 + 16, "Error")
                         CheckValue = checkResult(sheetname, i, j, id)
+                        CheckValue = checkExcessData(sheetname, i, j, "C")
                         If CheckValue = False Then Exit Function
                         
                     Case "ByXpath_VerifyText"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         'If Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B") = "" Then x = MsgBox(sheetname & "中，第" & j & "行缺少元件id", 0 + 16, "Error")
                         CheckValue = checkResult(sheetname, i, j, xpath)
+                        CheckValue = checkExcessData(sheetname, i, j, "C")
                         If CheckValue = False Then Exit Function
                         'CheckValue = checkXpath(sheetname, i, j)
-                        If CheckValue = False Then Exit Function
-    
-                  
+
                     Case "Byid_Wait"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         CheckValue = checkWait(sheetname, i, j, id)
+                        CheckValue = checkExcessData(sheetname, i, j, "C")
                         If CheckValue = False Then Exit Function
                     
                     Case "ByXpath_Wait"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         CheckValue = checkWait(sheetname, i, j, xpath)
+                        CheckValue = checkExcessData(sheetname, i, j, "C")
                         If CheckValue = False Then Exit Function
                         'CheckValue = checkXpath(sheetname, i, j)
-                        If CheckValue = False Then Exit Function
-                    
+                       
                     Case "Sleep"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         If Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B") = "" Then
@@ -205,6 +215,9 @@ Function CheckValue()
                             Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B").Interior.Pattern = xlNone
                             CheckValue = True
                         End If
+                        
+                        CheckValue = checkExcessData(sheetname, i, j, "C")
+                        If CheckValue = False Then Exit Function
                         
                     Case "ScreenShot"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
@@ -240,7 +253,19 @@ Function CheckValue()
     CheckValue2 = Delete_All_Blank_Cells
 End Function
 
+Function checkExcessData(sheetname, i, j, col) '檢查所有指令最後一欄是否為空白或無資料
 
+    If Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, col) <> "" Then
+                                
+        x = MsgBox(sheetname & "中，第" & j & "列第3欄請保持空白", 0 + 16, "Error")
+        Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, col).Interior.Color = RGB(255, 0, 0)
+        checkExcessData = False:
+    Else
+        Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, col).Interior.Pattern = xlNone
+        checkExcessData = True
+    End If
+
+End Function
 
 Function checkXpath(sheetname, i, j)
     
@@ -284,7 +309,7 @@ Function checkClick(sheetname, i, j, status)
             checkClick = False
             Exit Function
         ElseIf Left(Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B"), 5) = "//*[@" Then
-            x = MsgBox(sheetname & "中，第" & j & "使用Byid_Click，卻輸入Xpath", 0 + 16, "Error")
+            x = MsgBox(sheetname & "中，第" & j & "使用Byid，卻輸入Xpath", 0 + 16, "Error")
             Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B").Interior.Color = RGB(255, 0, 0)
             checkClick = False
             Exit Function
