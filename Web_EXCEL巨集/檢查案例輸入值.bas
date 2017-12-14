@@ -35,7 +35,19 @@ Function CheckValue()
                     Case "ByXpath_Click"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         CheckValue = checkClick(sheetname, i, j, xpath)
-                        CheckValue = checkXpath(sheetname, i, j)
+                        'CheckValue = checkXpath(sheetname, i, j)
+                        If CheckValue = False Then Exit Function
+                        
+                        
+                    Case "Byid_Clear"
+                        Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
+                        CheckValue = checkClick(sheetname, i, j, id)
+                        If CheckValue = False Then Exit Function
+                    
+                    Case "ByXpath_Clear"
+                        Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
+                        CheckValue = checkClick(sheetname, i, j, xpath)
+                        'CheckValue = checkXpath(sheetname, i, j)
                         If CheckValue = False Then Exit Function
 
                     Case "Byid_SendKey"
@@ -47,7 +59,7 @@ Function CheckValue()
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         CheckValue = checkSendKey(sheetname, i, j, xpath)
                         If CheckValue = False Then Exit Function
-                        CheckValue = checkXpath(sheetname, i, j)
+                        'CheckValue = checkXpath(sheetname, i, j)
                         If CheckValue = False Then Exit Function
                     
                     Case "Byid_Scroll"
@@ -59,7 +71,7 @@ Function CheckValue()
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         CheckValue = checkScroll(sheetname, i, j, xpath)
                         If CheckValue = False Then Exit Function
-                        CheckValue = checkXpath(sheetname, i, j)
+                       'CheckValue = checkXpath(sheetname, i, j)
                         If CheckValue = False Then Exit Function
                         
                     Case "Byid_invisibility"
@@ -71,14 +83,14 @@ Function CheckValue()
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         CheckValue = checkClick(sheetname, i, j, xpath)
                         If CheckValue = False Then Exit Function
-                        CheckValue = checkXpath(sheetname, i, j)
+                        'CheckValue = checkXpath(sheetname, i, j)
                         If CheckValue = False Then Exit Function
                         
                     Case "Launch"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         If Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B") <> "" Then
     
-                            x = MsgBox(sheetname & "中，第" & j & "僅能填入Launch", 0 + 16, "Error"): Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B").Interior.Color = RGB(255, 0, 0): CheckValue = False: Exit Function
+                            x = MsgBox(sheetname & "中，第" & j & "列僅能填入Launch", 0 + 16, "Error"): Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B").Interior.Color = RGB(255, 0, 0): CheckValue = False: Exit Function
                         Else
                             Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B").Interior.Pattern = xlNone
                             CheckValue = True
@@ -88,11 +100,63 @@ Function CheckValue()
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         If Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B") <> "" Then
                             
-                            x = MsgBox(sheetname & "中，第" & j & "僅能填入Quit", 0 + 16, "Error"): Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B").Interior.Color = RGB(255, 0, 0): CheckValue = False: Exit Function
+                            x = MsgBox(sheetname & "中，第" & j & "列僅能填入Quit", 0 + 16, "Error"): Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B").Interior.Color = RGB(255, 0, 0): CheckValue = False: Exit Function
                         Else
                             Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B").Interior.Pattern = xlNone
                             CheckValue = True
                         End If
+                        
+                    Case "Back"
+                        Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
+                        If Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B") <> "" Then
+                            
+                            x = MsgBox(sheetname & "中，第" & j & "列僅能填入Back", 0 + 16, "Error"): Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B").Interior.Color = RGB(255, 0, 0): CheckValue = False: Exit Function
+                        Else
+                            Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B").Interior.Pattern = xlNone
+                            CheckValue = True
+                        End If
+                        
+                    Case "Next"
+                        Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
+                        If Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B") <> "" Then
+                            
+                            x = MsgBox(sheetname & "中，第" & j & "列僅能填入Next", 0 + 16, "Error"): Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B").Interior.Color = RGB(255, 0, 0): CheckValue = False: Exit Function
+                        
+                        Else
+                            Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B").Interior.Pattern = xlNone
+                            CheckValue = True
+                        End If
+                        
+                    Case "Refresh"
+                        Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
+                        If Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B") <> "" Then
+                            
+                            x = MsgBox(sheetname & "中，第" & j & "列僅能填入Refresh", 0 + 16, "Error"): Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B").Interior.Color = RGB(255, 0, 0): CheckValue = False: Exit Function
+                        Else
+                            Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B").Interior.Pattern = xlNone
+                            CheckValue = True
+                        End If
+                        
+                    Case "Goto"
+                        Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
+                        If Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B") = "" Then
+                            
+                            x = MsgBox(sheetname & "中，第" & j & "列請填入網址 (如 https://www.google.com.tw)", 0 + 16, "Error"): Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B").Interior.Color = RGB(255, 0, 0): CheckValue = False: Exit Function
+                        
+                        ElseIf Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B") <> "" Then
+                        
+                            If Left(Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B"), 4) <> "http" Or Left(Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B"), 4) <> "http" Then
+                                
+                                x = MsgBox(sheetname & "中，第" & j & "列網址前面請加入https://或http://", 0 + 16, "Error"): Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B").Interior.Color = RGB(255, 0, 0): CheckValue = False: Exit Function
+                            Else
+                            
+                                Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B").Interior.Pattern = xlNone
+                                CheckValue = True
+                                    
+                            End If
+                       
+                        End If
+                        
                     Case "Byid_VerifyText"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         'If Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B") = "" Then x = MsgBox(sheetname & "中，第" & j & "行缺少元件id", 0 + 16, "Error")
@@ -104,7 +168,7 @@ Function CheckValue()
                         'If Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B") = "" Then x = MsgBox(sheetname & "中，第" & j & "行缺少元件id", 0 + 16, "Error")
                         CheckValue = checkResult(sheetname, i, j, xpath)
                         If CheckValue = False Then Exit Function
-                        CheckValue = checkXpath(sheetname, i, j)
+                        'CheckValue = checkXpath(sheetname, i, j)
                         If CheckValue = False Then Exit Function
     
                   
@@ -117,7 +181,7 @@ Function CheckValue()
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         CheckValue = checkWait(sheetname, i, j, xpath)
                         If CheckValue = False Then Exit Function
-                        CheckValue = checkXpath(sheetname, i, j)
+                        'CheckValue = checkXpath(sheetname, i, j)
                         If CheckValue = False Then Exit Function
                     
                     Case "Sleep"
