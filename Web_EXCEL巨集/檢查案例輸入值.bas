@@ -26,7 +26,9 @@ Function CheckValue()
                             Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "B").Interior.Pattern = xlNone
                             CheckValue = True
                         End If
-                    
+                         CheckValue = checkExcessData(sheetname, i, j, "C")
+                        If CheckValue = False Then Exit Function
+                        
                     Case "Byid_Click"
                         Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A").Font.Color = RGB(0, 0, 0)
                         CheckValue = checkClick(sheetname, i, j, id)
