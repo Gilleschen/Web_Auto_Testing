@@ -26,7 +26,7 @@
 
         Byid_Click/ByXpath_Click==>根據id/Xpath搜尋元件並點擊元件
 
-        Byid_Result/ByXpath_Result=>根據id/Xpath搜尋元件並比對ExpectResult內容
+        Byid_VerifyText/ByXpath_VerifyText=>根據id/Xpath搜尋元件並比對ExpectResult內容
 
         Byid_SendKey/ByXpath_SendKey=>根據id/Xpath搜尋元件並輸入數值或字串
 
