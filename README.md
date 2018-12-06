@@ -19,7 +19,7 @@ Step 1. 開啟Web_TestScript.xlsm並允許啟動巨集 (已建立Web_Infor、Web
 
 Step 2. 建立腳本：新增一工作表，工作表名稱必需以_TestScript為結尾 (e.g. Login_TestScript)，目前支援指令如下: (大小寫有分，使用方式請參考Web_TestScript.xlsm內說明工作表)
 
-* CaseName=>測試案列名稱(各案列開始時第一個填寫項目，必填!!!)
+* CaseName:測試案列名稱(各案列開始時第一個填寫項目，必填!!!)
 
 * Byid_Click/ByXpath_Click:根據id/Xpath搜尋元件並點擊元件
 
@@ -56,6 +56,21 @@ Step 3. 設定「期望字串」：點擊ExpectResult工作表，當使用Byid_V
 Step 4. 設定瀏覽器、測試網址資訊：點擊Web_Infor工作表，輸入Browser、BrowserDriverPath、TestURL、待測試腳本(以_TestScript結尾的工作表)，範例如下圖：
 
 ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/web_infor.PNG)
+
+Step 5. 點擊執行腳本，如下圖：
+![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/RunScript.png)
+
+#### Excel 測試報告
+
+1. 開啟C:\TUTK_QA_TestTool\TestReport\Web_TestReport.xlsm
+
+2. 根據瀏覽器類型自動建立TestReport工作表，如下圖： (e.g. chrome_TestReport)
+
+![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/report.PNG)
+
+範例測試結果如下圖：
+
+![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/TestResult.PNG)
   
 
 #### 測試腳本語法檢查：
@@ -92,17 +107,7 @@ Step 4. 設定瀏覽器、測試網址資訊：點擊Web_Infor工作表，輸入
         
         3.3 重新開啟Web_TestScript.xlsm
 
-#### Excel 測試報告
 
-1. 開啟C:\TUTK_QA_TestTool\TestReport\Web_TestReport.xlsm
-
-2. 根據瀏覽器類型自動建立TestReport工作表，如下圖： (e.g. chrome_TestReport)
-
-![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/report.PNG)
-
-範例測試結果如下圖：
-
-![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/TestResult.PNG)
 
 ##### 備註：
 
