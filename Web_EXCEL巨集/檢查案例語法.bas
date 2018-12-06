@@ -1,14 +1,14 @@
 Attribute VB_Name = "檢查案例語法"
 Function CheckCommand()
     Dim sheetname As String
-    Dim CaseName, LaunchAPP, Byid_Result, ByXpath_Result, QuitAPP As Integer
-    
+    Dim casename, LaunchAPP, Byid_Result, ByXpath_Result, QuitAPP As Integer
+    Application.ScreenUpdating = False
     i = 0
     Do
         
         If Right(ThisWorkbook.Sheets(i + 1).Name, 11) = "_TestScript" And ThisWorkbook.Sheets(i + 1).Visible = True Then
             'If ThisWorkbook.Sheets(i + 1).Visible = True Then
-                CaseName = 0: LaunchAPP = 0: Byid_Result = 0: ByXpath_Result = 0: QuitAPP = 0
+                casename = 0: LaunchAPP = 0: Byid_Result = 0: ByXpath_Result = 0: QuitAPP = 0
                 sheetname = ThisWorkbook.Sheets(i + 1).Name
                 j = 1
                 Do
@@ -17,7 +17,7 @@ Function CheckCommand()
                     
                     Case "CaseName"
                     
-                        CaseName = CaseName + 1
+                        casename = casename + 1
                     
                     Case "Launch"
                     
@@ -40,7 +40,7 @@ Function CheckCommand()
                 j = j + 1
                 Loop Until Sheets(ThisWorkbook.Sheets(i + 1).Name).Cells(j, "A") = ""
                 
-                If LaunchAPP <> CaseName Then
+                If LaunchAPP <> casename Then
                     x = MsgBox(sheetname & "中缺少LaunchAPP或CaseName", 0 + 16, "Error")
                     CheckCommand = False
                     Exit Function
@@ -48,7 +48,7 @@ Function CheckCommand()
                     CheckCommand = True
                 End If
  
-                If QuitAPP <> CaseName Then
+                If QuitAPP <> casename Then
                     x = MsgBox(sheetname & "中缺少QuitAPP或CaseName", 0 + 16, "Error")
                     CheckCommand = False
                     Exit Function
@@ -64,6 +64,7 @@ Function CheckCommand()
 
         i = i + 1
     Loop Until i = ThisWorkbook.Sheets.Count
+    Call Classification_TestCase
 End Function
 
 
