@@ -72,7 +72,6 @@ Step 5. 點擊執行腳本，如下圖：
 範例測試結果如下圖：
 
 ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/TestResult.PNG)
-  
 
 #### VBA 巨集
 
