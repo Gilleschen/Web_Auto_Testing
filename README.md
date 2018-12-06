@@ -119,9 +119,9 @@ Step 3. 腳本完成後，點擊Create Case按鈕
 
 ##### 備註：
 
-* Selenium Standalone Server:3.141.59
+* Selenium Standalone Server Version: 3.141.59
 
-* Selenium Client Version:3.141.59
+* Selenium Client Version: 3.141.59
 
 * Excel欄位若輸入純數字(e.g. 8888)，請轉換為文字格式，皆於數字前面加入單引號 (e.g. '8888)或執行增益集的檢查案例輸入值功能
 
