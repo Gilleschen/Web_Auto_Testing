@@ -73,49 +73,41 @@ Step 5. 點擊執行腳本，如下圖：
 ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/TestResult.PNG)
   
 
-#### 測試腳本語法檢查：
+#### VBA 巨集
 
-1. 執行Web_TestScript.xlsm增益集工具進行語法與資訊檢查，如下圖：
+1. 點擊增益集，如下圖：
 
-![image](https://github.com/Gilleschen/Android_invoke_excel/blob/master/picture/Gain_set.PNG)
+![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/functions.PNG)
 
 2. 各功能說明：
 
-        2.1 檢查資訊：檢查Web_Infor工作表所有欄位
-        
-        2.2 檢查案例語法：確認各案例結束後均執行Quit方法
-        
-        2.3 檢查案例輸入值：檢查所有命令及參數
-        
-        2.4 檢查期望結果：確認各案例之期望字串是否列於ExpectResult工作表；若只想自動化操作Web，當然非所有案列都需列ExpectResult
-        
-        2.5 執行腳本：開始執行指定的工作表腳本，建議執行腳本前請確認前4項功能無誤
-        
-                2.5.1 點擊執行腳本後，自動啟動Selenium Hub (http://localhost:4444/)
-        
-                2.5.2 自動啟動Selenium Node (Port = 5555, maxInstances = 5)
-        
-        註：2.2、2.3及2.4功能僅檢查以_TestScript為結尾且未隱藏的工作表 
+* 執行腳本：執行指定的工作表腳本。
 
-3. 功能異常排除：
-
-        3.1 刪除增益集自訂工具列，如下圖：
+* 檢查資訊：檢查Web_Infor工作表欄位是否填寫。
         
-      ![image](https://github.com/Gilleschen/Appium_Auto_Testing_Android/blob/master/picture/troubleshooting.png)
+* 檢查案例語法：確認各案例結束後均執行Quit方法。
         
-        3.2 存檔並關閉Web_TestScript.xlsm
+* 檢查案例輸入值：確認所有指令及參數是否正確。
         
-        3.3 重新開啟Web_TestScript.xlsm
+* 檢查期望結果：確認期望字串是否填入ExpectResult工作表。
 
+#### VBA 功能異常排除
 
+Step 1. 刪除增益集自訂工具列，如下圖：
+        
+![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/trobuleshotting.png)
+        
+Step 2. 存檔並關閉Web_TestScript.xlsm
+        
+Step 3. 重新開啟Web_TestScript.xlsm
 
 ##### 備註：
 
-* Selenium Client Version:3.8.1
+
+* Selenium Standalone Server:3.141.59
+
+* Selenium Client Version:3.141.59
 
 * Excel欄位若輸入純數字(e.g. 8888)，請轉換為文字格式，皆於數字前面加入單引號 (e.g. '8888)或執行增益集的檢查案例輸入值功能
 
-* 固定Selenium Node Port = 5555, maxInstances = 5
-
-* 僅支援Chrome, FireFox, Internet Explorer瀏覽器
-
+* 僅支援Chrome, FireFox瀏覽器
