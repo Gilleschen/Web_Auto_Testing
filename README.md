@@ -1,50 +1,51 @@
 # 使用說明
 
+#### Framework
+![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/framework.png)
+
+
 #### 測試前設定：
 
-1. 下載selenium-server-standalone-3.8.1.jar</a>及瀏覽器WebDriver (請參考<a href="http://www.seleniumhq.org/download/">Selenium Downloads</a>)
+* 下載Chorme, Firefox Third Party Browser Drivers(請參考<a href="http://www.seleniumhq.org/download/">Selenium Downloads</a>)
 
-2. 下載<a href="https://github.com/Gilleschen/Web_Auto_Testing/raw/master/Web_Auto.jar">Web_Auto.jar</a>及<a href="https://github.com/Gilleschen/Web_Auto_Testing/raw/master/Web_TestScrpit.xlsm">Web_TestScript.xlsm</a>
+* 下載<a href="https://github.com/Gilleschen/Web_Auto_Testing/raw/master/Web_Auto.jar">Web_Auto.jar</a>及<a href="https://github.com/Gilleschen/Web_Auto_Testing/raw/master/Web_TestScrpit.xlsm">Web_TestScript.xlsm</a>至C:\TUTK_QA_TestTool\TestTool資料夾
 
-#### 測試腳本建立流程：
+* 建立C:\TUTK_QA_TestTool\TestReport資料夾
 
-1. 於C:\建立TUTK_QA_TestTool資料夾 (C:\TUTK_QA_TestTool)
 
-2. TUTK_QA_TestTool中分別建立TestTool資料夾與TestReport資料夾
+#### 腳本建立流程：
 
-3. 將Web_TestScript.xlsm放至TestTool資料夾 (C:\TUTK_QA_TestTool\TestTool\Web_TestScript.xlsm)(檔名及副檔名請勿更改)
+Step 1. 開啟Web_TestScript.xlsm並允許啟動巨集 (已建立Web_Infor、ExpectResult及說明工作表)
 
-4. 開啟Web_TestScript.xlsm並允許啟動巨集 (已建立Web_Infor、ExpectResult及說明工作表)
+Step 2. 建立腳本：新增一工作表，工作表名稱必需以_TestScript為結尾 (e.g. Login_TestScript)，目前支援指令如下: (大小寫有分，使用方式請參考Web_TestScript.xlsm內說明工作表)
 
-5. Web_Infor工作表輸入Browser、BrowserDriverPath、TestURL、待測試腳本(以_TestScript結尾的工作表)、Web_Auto.jar路徑及selenium-server-standalone-3.4.0.jar路徑，範例如下圖：
+* CaseName=>測試案列名稱(各案列開始時第一個填寫項目，必填!!!)
 
-![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/web_infor.PNG)
+* Byid_Click/ByXpath_Click:根據id/Xpath搜尋元件並點擊元件
 
-6. 建立腳本(建立案列Case)：新增一工作表，工作表名稱須以_TestScript為結尾 (e.g. Login_TestScript)，目前支援指令如下: (大小寫有分，使用方式請參考Web_TestScript.xlsm內說明工作表)
+* Byid_VerifyText/ByXpath_VerifyText:根據id/Xpath搜尋元件並比對ExpectResult內容
 
-        CaseName=>測試案列名稱(各案列開始時第一個填寫項目，必填!!!)
+* Byid_SendKey/ByXpath_SendKey:根據id/Xpath搜尋元件並輸入數值或字串
 
-        Byid_Click/ByXpath_Click==>根據id/Xpath搜尋元件並點擊元件
-
-        Byid_VerifyText/ByXpath_VerifyText=>根據id/Xpath搜尋元件並比對ExpectResult內容
-
-        Byid_SendKey/ByXpath_SendKey=>根據id/Xpath搜尋元件並輸入數值或字串
-
-        Byid_Wait/ByXpath_Wait=>根據id/Xpath搜尋元件並等待元件出現
+* Byid_Wait/ByXpath_Wait:根據id/Xpath搜尋元件並等待元件出現
         
-        Byid_invisibility/ByXpath_invisibility=>根據id/Xpath搜尋元件並等待元件消失
+* Byid_invisibility/ByXpath_invisibility:根據id/Xpath搜尋元件並等待元件消失
 
-        Launch=>開啟瀏覽器並啟動指定的URL網址
+* Launch:開啟瀏覽器並啟動指定的URL網址
 
-        Quit=>關閉瀏覽器及WebDriver
+* Quit:關閉瀏覽器及WebDriver
 
-        ScreenShot=>螢幕截圖
+* ScreenShot:螢幕截圖
 
-        Sleep=>閒置n秒鐘
+* Sleep:閒置n秒鐘
   
 範例腳本如下圖：
 
 ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/Script_example.PNG)
+
+Step3. Web_Infor工作表輸入Browser、BrowserDriverPath、TestURL、待測試腳本(以_TestScript結尾的工作表)，範例如下圖：
+
+![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/web_infor.PNG)
   
 7. ExpectResult工作表輸入各測試案例的期望結果
 
