@@ -4,14 +4,14 @@ Function CheckAPPandDevice()
     Dim scriptnumber, result As Integer
     'Dim BrowserList(5) As String
     
-    
+    Application.ScreenUpdating = False
     
     '確認CaseName欄位
     Sheets("Web_Infor").Select
     TotalCaseName = Sheets("Web_Infor").Cells(2, "E").Text
     For w = 1 To 10
         Sheets("Web_Infor").Cells(2, "E").Select
-        Selection.Delete Shift:=xlUp
+        Selection.delete Shift:=xlUp
     Next w
     Sheets("Web_Infor").Cells(2, "E") = TotalCaseName
     i = 2
@@ -180,44 +180,44 @@ Function CheckAPPandDevice()
     Loop Until Sheets("Web_Infor").Cells(j, "A") = ""
     
     '檢查SeleniumServerJarPath
-    If Sheets("Web_Infor").Cells(2, "G") = "" Then
-    
-        x = MsgBox("請填入SeleniumServerJarPath檔路徑" & vbNewLine & "例如：C:\Users\Desktop\檔名.jar", 0 + 16, "Error")
-        CheckAPPandDevice = False
-        Exit Function
-    Else
-        If Dir(CStr(Sheets("Web_Infor").Cells(2, "G"))) = "" Then
-        
-            x = MsgBox("找不到" & Sheets("Web_Infor").Cells(2, "G"), 0 + 16, "Error")
-            Sheets("Web_Infor").Cells(2, "G").Font.Color = RGB(255, 0, 0)
-            CheckAPPandDevice = False
-            Exit Function
-        Else
-            Sheets("Web_Infor").Cells(2, "G").Font.Color = RGB(0, 0, 0)
-            CheckAPPandDevice = True
-        End If
-    
-    End If
+'    If Sheets("Web_Infor").Cells(2, "G") = "" Then
+'
+'        x = MsgBox("請填入SeleniumServerJarPath檔路徑" & vbNewLine & "例如：C:\Users\Desktop\檔名.jar", 0 + 16, "Error")
+'        CheckAPPandDevice = False
+'        Exit Function
+'    Else
+'        If Dir(CStr(Sheets("Web_Infor").Cells(2, "G"))) = "" Then
+'
+'            x = MsgBox("找不到" & Sheets("Web_Infor").Cells(2, "G"), 0 + 16, "Error")
+'            Sheets("Web_Infor").Cells(2, "G").Font.Color = RGB(255, 0, 0)
+'            CheckAPPandDevice = False
+'            Exit Function
+'        Else
+'            Sheets("Web_Infor").Cells(2, "G").Font.Color = RGB(0, 0, 0)
+'            CheckAPPandDevice = True
+'        End If
+'
+'    End If
     
     '檢查JarPath
-    If Sheets("Web_Infor").Cells(2, "F") = "" Then
-    
-        x = MsgBox("請填入JarPath檔路徑" & vbNewLine & "例如：C:\Users\Desktop\檔名.jar", 0 + 16, "Error")
-        CheckAPPandDevice = False
-        Exit Function
-    Else
-    
-        If Dir(CStr(Sheets("Web_Infor").Cells(2, "F"))) = "" Then
-        
-            x = MsgBox("找不到" & Sheets("Web_Infor").Cells(2, "F"), 0 + 16, "Error")
-            Sheets("Web_Infor").Cells(2, "F").Font.Color = RGB(255, 0, 0)
-            CheckAPPandDevice = False
-            Exit Function
-            
-        Else
-            Sheets("Web_Infor").Cells(2, "F").Font.Color = RGB(0, 0, 0)
-            CheckAPPandDevice = True
-        End If
-    End If
+'    If Sheets("Web_Infor").Cells(2, "F") = "" Then
+'
+'        x = MsgBox("請填入JarPath檔路徑" & vbNewLine & "例如：C:\Users\Desktop\檔名.jar", 0 + 16, "Error")
+'        CheckAPPandDevice = False
+'        Exit Function
+'    Else
+'
+'        If Dir(CStr(Sheets("Web_Infor").Cells(2, "F"))) = "" Then
+'
+'            x = MsgBox("找不到" & Sheets("Web_Infor").Cells(2, "F"), 0 + 16, "Error")
+'            Sheets("Web_Infor").Cells(2, "F").Font.Color = RGB(255, 0, 0)
+'            CheckAPPandDevice = False
+'            Exit Function
+'
+'        Else
+'            Sheets("Web_Infor").Cells(2, "F").Font.Color = RGB(0, 0, 0)
+'            CheckAPPandDevice = True
+'        End If
+'    End If
     
 End Function

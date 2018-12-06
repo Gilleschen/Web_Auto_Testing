@@ -10,7 +10,7 @@ Attribute VB_Exposed = True
 
 Private Sub Workbook_BeforeClose(Cancel As Boolean)
     On Error GoTo skipp
-    Application.CommandBars("功能說明").Delete
+    Application.CommandBars("功能說明").delete
     
 skipp:
     ActiveWorkbook.Save
@@ -19,9 +19,9 @@ End Sub
 
 Private Sub Workbook_Open()
     Dim myNewBar As CommandBar           '宣告工具列物件
-    Dim RunScript, CheckAPPandDevice, CheckCommand, CheckValue, CheckExpectResult As CommandBarButton '宣告工具列按鈕物件
+    Dim CreateScript, RunScript, CheckAPPandDevice, CheckCommand, CheckValue, CheckExpectResult As CommandBarButton '宣告工具列按鈕物件
 
-    Set myNewBar = Application.CommandBars.Add      '新增一個工具列
+    Set myNewBar = Application.CommandBars.add      '新增一個工具列
     On Error GoTo skipp
     
     myNewBar.Name = "功能說明" '工具列命名
@@ -29,11 +29,26 @@ Private Sub Workbook_Open()
    
 
     With myNewBar
-        Set RunScript = .Controls.Add(msoControlButton)
-        Set CheckAPPandDevice = .Controls.Add(msoControlButton)
-        Set CheckCommand = .Controls.Add(msoControlButton)
-        Set CheckValue = .Controls.Add(msoControlButton)
-        Set CheckExpectResult = .Controls.Add(msoControlButton)
+        Set RunScript = .Controls.add(msoControlButton)
+        Set CheckAPPandDevice = .Controls.add(msoControlButton)
+        Set CheckCommand = .Controls.add(msoControlButton)
+        Set CheckValue = .Controls.add(msoControlButton)
+        Set CheckExpectResult = .Controls.add(msoControlButton)
+        Set CreateScript = .Controls.add(msoControlButton)
+        
+        With CreateScript
+
+            .Style = msoButtonIconAndCaption
+            .BeginGroup = True
+            .Caption = "腳本產生器"
+            .TooltipText = "啟動腳本產生器"
+            .FaceId = 592
+            .Tag = "Jhih Chen"
+            .OnAction = "CreateScript"     '設定按下此鍵時所要執行的巨集
+            
+        End With
+        
+        
              
         With RunScript
 
@@ -44,7 +59,7 @@ Private Sub Workbook_Open()
             .BeginGroup = True
             .Caption = "執行腳本"                  '顯示在工具列上的按鈕文字
             .TooltipText = "執行腳本" ' "TUTK QA團隊製作"  '滑鼠移過去時，所顯示的提示文字
-            .FaceId = 1763 '1778                       '小圖示
+            .FaceId = 156 '1778                       '小圖示
             .Tag = "Jhih Chen"
             .OnAction = "RunScript"     '設定按下此鍵時所要執行的巨集
         End With
@@ -91,16 +106,16 @@ Private Sub Workbook_Open()
         
         End With
         
-        With CheckExpectResult
-            .Style = msoButtonIconAndCaption  ' msoCombolabel
-            .BeginGroup = True
-            .Caption = "啟動Server"                 '
-            .TooltipText = "啟動Selenium Server及BrowserDriver"
-            .FaceId = 643 '25
-            .Tag = "Jhih Chen"
-            .OnAction = "StartServer"
-        
-        End With
+'        With CheckExpectResult
+'            .Style = msoButtonIconAndCaption  ' msoCombolabel
+'            .BeginGroup = True
+'            .Caption = "啟動Server"                 '
+'            .TooltipText = "啟動Selenium Server及BrowserDriver"
+'            .FaceId = 643 '25
+'            .Tag = "Jhih Chen"
+'            .OnAction = "StartServer"
+'
+'        End With
         
         
         
