@@ -123,3 +123,16 @@ Private Sub Worksheet_Activate()
     Application.ScreenUpdating = True
 End Sub
 
+Private Sub Worksheet_Change(ByVal Target As Range)
+    Application.EnableEvents = False
+    If Sheets("Web_Infor").Cells(2, "E") = "" Then
+        
+        For w = 1 To 10
+            Sheets("Web_Infor").Cells(2, "E").Select
+            Selection.delete Shift:=xlUp
+        Next w
+        
+    End If
+    
+    Application.EnableEvents = True
+End Sub
