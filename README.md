@@ -49,7 +49,7 @@ Step 3. 設定「期望字串」：點擊ExpectResult工作表，當使用Byid_V
         
 * 與案列名稱同列處輸入期望結果
         
- ExpectResult範例如下圖：
+範例如下圖：
  
  ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/ExpectResult_example.PNG)
  
@@ -58,6 +58,7 @@ Step 4. 設定瀏覽器、測試網址資訊：點擊Web_Infor工作表，輸入
 ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/web_infor.PNG)
 
 Step 5. 點擊執行腳本，如下圖：
+
 ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/RunScript.png)
 
 #### Excel 測試報告
