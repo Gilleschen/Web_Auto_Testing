@@ -15,7 +15,7 @@
 
 #### 腳本建立流程：
 
-Step 1. 開啟Web_TestScript.xlsm並允許啟動巨集 (已建立Web_Infor、ExpectResult及說明工作表)
+Step 1. 開啟Web_TestScript.xlsm並允許啟動巨集 (已建立Web_Infor、Web_InforData、ExpectResult及說明工作表)
 
 Step 2. 建立腳本：新增一工作表，工作表名稱必需以_TestScript為結尾 (e.g. Login_TestScript)，目前支援指令如下: (大小寫有分，使用方式請參考Web_TestScript.xlsm內說明工作表)
 
@@ -43,19 +43,20 @@ Step 2. 建立腳本：新增一工作表，工作表名稱必需以_TestScript�
 
 ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/Script_example.PNG)
 
-Step3. Web_Infor工作表輸入Browser、BrowserDriverPath、TestURL、待測試腳本(以_TestScript結尾的工作表)，範例如下圖：
+Step 3. 設定「期望字串」：點擊ExpectResult工作表，當使用Byid_VerifyText或ByXpath_VerifyText時，需在ExpectResult工作表填入期望字串。 (若測試案例不包含檢驗字串，則此步驟可省略)
 
-![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/web_infor.PNG)
-  
-7. ExpectResult工作表輸入各測試案例的期望結果
-
-        7.1 A欄第二列處往下填入案列名稱 (CaseName)
+* A欄第二列處往下填入案列名稱 (CaseName)
         
-        7.2 與案列名稱同列處輸入期望結果
+* 與案列名稱同列處輸入期望結果
         
  ExpectResult範例如下圖：
  
  ![image](https://github.com/Gilleschen/Android_invoke_excel/blob/master/picture/Result_example.PNG)
+ 
+Step 4. 設定瀏覽器、測試網址資訊：點擊Web_Infor工作表，輸入Browser、BrowserDriverPath、TestURL、待測試腳本(以_TestScript結尾的工作表)，範例如下圖：
+
+![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/web_infor.PNG)
+  
 
 #### 測試腳本語法檢查：
 
