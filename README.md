@@ -91,6 +91,8 @@ Step 5. 點擊執行腳本，如下圖：
         
 * 檢查期望結果：確認期望字串是否填入ExpectResult工作表。
 
+* ![腳本產生器](#scriptcreater)：透過VBA建立新腳本，也可手動建立工作表腳本。
+
 #### VBA 功能異常排除
 
 Step 1. 刪除增益集自訂工具列，如下圖：
@@ -101,8 +103,21 @@ Step 2. 存檔並關閉Web_TestScript.xlsm
         
 Step 3. 重新開啟Web_TestScript.xlsm
 
-##### 備註：
+# VBA 巨集使用說明
 
+<a name="scriptcreater"/>
+
+#### 腳本產生器說明 
+
+Step 1. 點擊指令類型按鈕(藍框)，列出指令清單(綠框)
+
+Step 2. 點選指令清單中的指令(綠框)後，點擊Add按鈕加入右側的腳本清單(紫框)
+
+Step 3. 腳本完成後，點擊Create Case按鈕
+
+![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/ScriptCreater.png)
+
+##### 備註：
 
 * Selenium Standalone Server:3.141.59
 
