@@ -8,12 +8,12 @@ Sub RunScript()
     'state = 0
     ActiveWorkbook.Save
     Application.Wait Now() + TimeValue("00:00:02") '暫緩2秒，等待Excel存檔
-    
+    Application.ScreenUpdating = False
     CheckAPPandDeviceResult = CheckAPPandDevice()
     CheckValueResult = CheckValue()
     CheckCommandResult = CheckCommand()
     
-    
+    Sheets("Web_Infor").Select
     If CheckAPPandDeviceResult = True And CheckValueResult = True And CheckCommandResult = True Then
         
 '        LaucnhHub = "java -jar " & Sheets("Web_Infor").Cells(2, "G") & " -role hub"
@@ -43,7 +43,7 @@ Sub RunScript()
         'Application.Wait Now() + TimeValue("00:00:03") '暫緩3秒，等待Server及Node
         'Jar = "java -jar " & Sheets("Web_Infor").Cells(2, "F")
         'r = Shell(Environ("windir") & "\system32\cmd.exe cmd/k" & Jar, 1) '開始測試
-        
+        Sheets("Web_Infor").Select
         Jar = "java -jar " & "C:\TUTK_QA_TestTool\TestTool\Web_Auto.jar"
         r = Shell(Environ("windir") & "\system32\cmd.exe cmd/k" & Jar, 1) '開始測試
         
