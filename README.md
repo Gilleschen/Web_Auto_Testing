@@ -6,7 +6,7 @@
 
 #### 測試前設定：
 
-* 下載Chorme, Firefox Third Party Browser Drivers(請參考<a href="http://www.seleniumhq.org/download/">Selenium Downloads</a>)
+* 下載Chorme, Firefox Third Party Browser Drivers (請參考<a href="http://www.seleniumhq.org/download/">Selenium Downloads</a>)
 
 * 下載<a href="https://github.com/Gilleschen/Web_Auto_Testing/raw/master/Web_Auto.jar">Web_Auto.jar</a>及<a href="https://github.com/Gilleschen/Web_Auto_Testing/raw/master/Web_TestScrpit.xlsm">Web_TestScript.xlsm</a>至C:\TUTK_QA_TestTool\TestTool資料夾
 
@@ -23,7 +23,7 @@ Step 2. 建立腳本：新增一工作表，工作表名稱必需以_TestScript�
 
 * Byid_Click/ByXpath_Click:根據id/Xpath搜尋元件並點擊元件
 
-* Byid_VerifyText/ByXpath_VerifyText:根據id/Xpath搜尋元件並比對ExpectResult內容
+* Byid_VerifyText/ByXpath_VerifyText:根據id/xpath搜尋元件並取得元件Text屬性之字串後，比對ExpectResult內期望字串
 
 * Byid_SendKey/ByXpath_SendKey:根據id/Xpath搜尋元件並輸入數值或字串
 
@@ -33,7 +33,7 @@ Step 2. 建立腳本：新增一工作表，工作表名稱必需以_TestScript�
 
 * Launch:開啟瀏覽器並啟動指定的URL網址
 
-* Quit:關閉瀏覽器及WebDriver
+* Quit:關閉瀏覽器
 
 * ScreenShot:螢幕截圖
 
