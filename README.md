@@ -93,16 +93,6 @@ Step 2. 點擊瀏覽器名稱之TestReport工作表，如下圖： (e.g. chrome_
 
 * [腳本產生器](#scriptcreater)：透過VBA建立新腳本，也可手動建立工作表腳本。
 
-#### VBA 功能異常排除
-
-Step 1. 刪除增益集自訂工具列，如下圖：
-        
-![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/trobuleshotting.png)
-        
-Step 2. 存檔並關閉Web_TestScript.xlsm
-        
-Step 3. 重新開啟Web_TestScript.xlsm
-
 # VBA 巨集使用說明
 
 <a name="scriptcreater"/>
@@ -116,6 +106,16 @@ Step 2. 點選指令清單中的指令(綠框)後，點擊Add按鈕加入右側�
 Step 3. 腳本完成後，點擊Create Case按鈕
 
 ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/ScriptCreater.png)
+
+#### VBA 功能異常排除
+
+Step 1. 刪除增益集自訂工具列，如下圖：
+        
+![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/trobuleshotting.png)
+        
+Step 2. 存檔並關閉Web_TestScript.xlsm
+        
+Step 3. 重新開啟Web_TestScript.xlsm
 
 ##### 備註：
 
