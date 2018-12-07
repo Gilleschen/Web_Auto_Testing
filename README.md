@@ -4,7 +4,7 @@
 ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/framework.png)
 
 
-#### 測試前設定：
+#### 使用前設定：
 
 * 下載Chorme, Firefox Third Party Browser Drivers (請參考<a href="http://www.seleniumhq.org/download/">Selenium Downloads</a>)
 
@@ -53,7 +53,7 @@ Step 3. 設定「期望字串」：點擊ExpectResult工作表，當使用Byid_V
  
  ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/ExpectResult_example.PNG)
  
-Step 4. 設定瀏覽器、測試網址資訊：點擊Web_Infor工作表，輸入Browser、BrowserDriverPath、TestURL、待測試腳本(以_TestScript結尾的工作表)，範例如下圖：
+Step 4. 設定瀏覽器、測試網址資訊：點擊Web_Infor工作表，輸入Browser、BrowserDriverPath、TestURL、測試腳本(以_TestScript結尾的工作表)，範例如下圖：
 
 ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/web_infor.PNG)
 
