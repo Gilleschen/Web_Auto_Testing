@@ -65,7 +65,7 @@ Step 5. 點擊執行腳本，如下圖：
 
 1. 開啟C:\TUTK_QA_TestTool\TestReport\Web_TestReport.xlsm
 
-2. 根據瀏覽器類型自動建立TestReport工作表，如下圖： (e.g. chrome_TestReport)
+2. 根據瀏覽器名稱建立TestReport工作表，如下圖： (e.g. chrome_TestReport)
 
 ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/report.PNG)
 
