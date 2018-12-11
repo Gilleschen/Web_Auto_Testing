@@ -21,11 +21,11 @@ Step 2. 建立腳本：新增一工作表，工作表名稱必需以_TestScript�
 
 * CaseName:測試案列名稱(各案列開始時第一個填寫項目，必填!!!)
 
-* Byid_Click/ByXpath_Click:根據id/Xpath搜尋元件並點擊元件
+* Byid_Click/ByXpath_Click：根據id/Xpath搜尋元件並點擊元件
 
-* Byid_VerifyText/ByXpath_VerifyText:根據id/xpath搜尋元件並取得元件Text屬性之字串後，比對ExpectResult內期望字串
+* Byid_VerifyText/ByXpath_VerifyText：根據id/xpath搜尋元件並取得元件Text屬性之字串後，比對ExpectResult內期望字串
 
-* Byid_SendKey/ByXpath_SendKey:根據id/Xpath搜尋元件並輸入數值或字串
+* Byid_SendKey/ByXpath_SendKey：根據id/Xpath搜尋元件並輸入數值或字串
 
 * Byid_Wait/ByXpath_Wait:根據id/Xpath搜尋元件並等待元件出現
 
