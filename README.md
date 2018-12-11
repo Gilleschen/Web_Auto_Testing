@@ -57,15 +57,27 @@ Step 2. 建立腳本：新增一工作表，工作表名稱必需以_TestScript�
 
 Step 3. 設定「期望字串」：點擊ExpectResult工作表，當使用Byid_VerifyText或ByXpath_VerifyText時 (如上圖範例#7)，需在ExpectResult工作表填入期望字串。 (若測試案例不包含檢驗字串，則此步驟可省略)
 
-* A欄第二列處往下填入案列名稱 (CaseName)
+* Case Name：填入案列名稱
         
-* 與案列名稱同列處輸入期望結果
+* Expect：輸入「期望字串」
         
 範例如下圖：
  
  ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/ExpectResult_example.PNG)
  
-Step 4. 設定瀏覽器、測試網址資訊：點擊Web_Infor工作表，輸入Browser、BrowserDriverPath、TestURL、測試腳本(以_TestScript結尾的工作表)，範例如下圖：
+Step 4. 設定瀏覽器、測試網址資訊：點擊Web_Infor工作表，項目如下：
+
+* Browser：輸入測試瀏覽器名稱
+
+* BrowserDriverPath：輸入Third Party Browser Drivers 路徑
+
+* TestURL：輸入測試URL
+
+* Script Name：輸入腳本工作表名稱
+
+* Case Name：輸入測試案例名稱 (若不指定案例，則執行所有案例)
+
+範例如下圖：
 
 ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/web_infor.PNG)
 
