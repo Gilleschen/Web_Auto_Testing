@@ -27,29 +27,29 @@ Step 2. 建立腳本：新增一工作表，工作表名稱必需以_TestScript�
 
 * Byid_SendKey/ByXpath_SendKey：根據id/Xpath搜尋元件並輸入數值或字串
 
-* Byid_Wait/ByXpath_Wait:根據id/Xpath搜尋元件並等待元件出現
+* Byid_Wait/ByXpath_Wait：根據id/Xpath搜尋元件並等待元件出現
 
-* Byid_ScrollByXpath_Scroll:根據id/Xpath搜尋元件並捲動畫面至該元件
+* Byid_ScrollByXpath_Scroll：根據id/Xpath搜尋元件並捲動畫面至該元件
         
-* Byid_invisibility/ByXpath_invisibility:根據id/Xpath搜尋元件並等待元件消失
+* Byid_invisibility/ByXpath_invisibility：根據id/Xpath搜尋元件並等待元件消失
 
-* Byid_Clear/ByXpath_Clear:根據id/Xpath搜尋元件並清除該元件內字串
+* Byid_Clear/ByXpath_Clear：根據id/Xpath搜尋元件並清除該元件內字串
 
-* Launch:開啟瀏覽器並啟動指定的URL網址
+* Launch：開啟瀏覽器並啟動指定的URL網址
 
-* Quit:關閉瀏覽器
+* Quit：關閉瀏覽器
 
-* Goto:啟動指定URL網址
+* Goto：啟動指定URL網址
 
-* Back:點擊上一頁
+* Back：點擊上一頁
 
-* Next:點擊下一頁
+* Next：點擊下一頁
 
-* Refresh:重新整理網頁
+* Refresh：重新整理網頁
 
-* ScreenShot:螢幕截圖
+* ScreenShot：螢幕截圖
 
-* Sleep:閒置n秒鐘
+* Sleep：閒置n秒鐘
   
 範例腳本如下圖：
 
