@@ -17,23 +17,9 @@
 
 Step 1. 開啟Web_TestScript.xlsm並允許啟動巨集 (已建立Web_Infor、Web_InforData、ExpectResult、CommandCode及說明工作表)
 
-Step 2. 建立腳本：新增一工作表，工作表名稱必需以_TestScript為結尾 (e.g. Login_TestScript)，目前支援指令如下: (大小寫有分，使用方式請參考Web_TestScript.xlsm內說明工作表)
+Step 2. 建立腳本：新增一工作表，工作表名稱必需以_TestScript為結尾 (e.g. Login_TestScript)，指令如下: (指令請參考Web_TestScript.xlsm內說明工作表)
 
-* CaseName:測試案列名稱(各案列開始時第一個填寫項目，必填!!!)
-
-* Byid_Click/ByXpath_Click：根據id/Xpath搜尋元件並點擊元件
-
-* Byid_VerifyText/ByXpath_VerifyText：根據id/xpath搜尋元件並取得元件Text屬性之字串後，比對ExpectResult內期望字串
-
-* Byid_SendKey/ByXpath_SendKey：根據id/Xpath搜尋元件並輸入數值或字串
-
-* Byid_Wait/ByXpath_Wait：根據id/Xpath搜尋元件並等待元件出現
-
-* Byid_ScrollByXpath_Scroll：根據id/Xpath搜尋元件並捲動畫面至該元件
-        
-* Byid_invisibility/ByXpath_invisibility：根據id/Xpath搜尋元件並等待元件消失
-
-* Byid_Clear/ByXpath_Clear：根據id/Xpath搜尋元件並清除該元件內字串
+* CaseName：測試案列名稱
 
 * Launch：開啟瀏覽器並啟動指定的URL網址
 
@@ -50,6 +36,20 @@ Step 2. 建立腳本：新增一工作表，工作表名稱必需以_TestScript�
 * ScreenShot：螢幕截圖
 
 * Sleep：閒置n秒鐘
+
+* Byid_Click/ByXpath_Click：根據id/Xpath搜尋元件並點擊元件
+
+* Byid_VerifyText/ByXpath_VerifyText：根據id/xpath搜尋元件並取得元件Text屬性之字串後，比對ExpectResult內期望字串
+
+* Byid_SendKey/ByXpath_SendKey：根據id/Xpath搜尋元件並輸入數值或字串
+
+* Byid_Wait/ByXpath_Wait：根據id/Xpath搜尋元件並等待元件出現
+
+* Byid_ScrollByXpath_Scroll：根據id/Xpath搜尋元件並捲動畫面至該元件
+        
+* Byid_invisibility/ByXpath_invisibility：根據id/Xpath搜尋元件並等待元件消失
+
+* Byid_Clear/ByXpath_Clear：根據id/Xpath搜尋元件並清除該元件內字串
   
 範例腳本如下圖：
 
