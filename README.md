@@ -85,6 +85,9 @@ Step 5. 點擊執行腳本，如下圖：
 
 ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/RunScript.png)
 
+ #### 腳本測試影片
+ [![Demo CountPages alpha](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/demo.gif)](https://drive.google.com/file/d/1CK4uuSvj5FR_Z1jmGxn86sVyF0F7a9yN/view?usp=sharing)
+
 #### Excel 測試報告
 
 Step 1. 開啟C:\TUTK_QA_TestTool\TestReport\Web_TestReport.xlsm
