@@ -55,7 +55,7 @@ Step 2. 建立腳本：新增一工作表，工作表名稱必需以_TestScript�
 
 ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/Script_example.PNG)
 
-Step 3. 設定「期望字串」：點擊ExpectResult工作表，當使用Byid_VerifyText或ByXpath_VerifyText時 (如上圖範例#7)，需在ExpectResult工作表填入期望字串。 (若測試案例不包含檢驗字串，則此步驟可省略)
+Step 3. 設定「期望字串」：點擊ExpectResult工作表，當使用Byid_VerifyText或ByXpath_VerifyText時 (如上圖藍框)，需在ExpectResult工作表填入期望字串。 (若測試案例不包含檢驗字串，則此步驟可省略)
 
 * Case Name：填入案列名稱
         
