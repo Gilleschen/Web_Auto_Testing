@@ -17,7 +17,7 @@
 
 Step 1. 開啟Web_TestScript.xlsm並允許啟動巨集 (已建立Web_Infor、Web_InforData、ExpectResult、CommandCode及說明工作表)
 
-Step 2. 建立腳本：新增一工作表，工作表名稱必需以_TestScript為結尾 (e.g. Login_TestScript)，指令如下: (指令請參考Web_TestScript.xlsm內說明工作表)
+Step 2. 建立腳本：新增一工作表，工作表名稱必需以_TestScript為結尾 (e.g. Login_TestScript)，指令如下: (指令請參考說明工作表)
 
 * CaseName：測試案列名稱
 
