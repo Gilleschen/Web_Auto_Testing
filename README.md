@@ -4,7 +4,7 @@
 ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/framework.png)
 
 
-#### 使用前設定：
+#### 使用前設定
 
 * 下載Chorme, Firefox Third Party Browser Drivers (請參考<a href="http://www.seleniumhq.org/download/">Selenium Downloads</a>)
 
@@ -13,7 +13,7 @@
 * 建立C:\TUTK_QA_TestTool\TestReport資料夾
 
 
-#### 腳本建立流程：
+#### 腳本建立流程
 
 Step 1. 開啟Web_TestScript.xlsm並允許啟動巨集 (已建立Web_Infor、Web_InforData、ExpectResult、CommandCode及說明工作表)
 
@@ -86,6 +86,7 @@ Step 5. 點擊執行腳本，如下圖：
 ![image](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/RunScript.png)
 
  #### 腳本測試影片
+ 
  [![Demo CountPages alpha](https://github.com/Gilleschen/Web_Auto_Testing/blob/master/picture/demo.gif)](https://drive.google.com/file/d/1CK4uuSvj5FR_Z1jmGxn86sVyF0F7a9yN/view?usp=sharing)
 
 #### Excel 測試報告
@@ -144,7 +145,7 @@ Step 2. 存檔並關閉Web_TestScript.xlsm
         
 Step 3. 重新開啟Web_TestScript.xlsm
 
-##### 備註：
+##### 備註
 
 * Selenium Standalone Server Version: 3.141.59
 
